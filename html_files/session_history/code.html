@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "primary-fixed-dim": "#c0c1ff",
+                  "on-secondary-container": "#00374d",
+                  "secondary": "#7bd0ff",
+                  "on-surface-variant": "#c7c4d7",
+                  "on-tertiary": "#4f2500",
+                  "inverse-primary": "#494bd6",
+                  "on-tertiary-container": "#452000",
+                  "inverse-surface": "#e4e1ed",
+                  "surface-container": "#1f1f27",
+                  "surface-container-lowest": "#0d0d15",
+                  "on-primary-container": "#0d0096",
+                  "secondary-fixed": "#c4e7ff",
+                  "surface-dim": "#13131b",
+                  "tertiary-fixed-dim": "#ffb783",
+                  "secondary-fixed-dim": "#7bd0ff",
+                  "surface-container-highest": "#34343d",
+                  "error": "#ffb4ab",
+                  "tertiary": "#ffb783",
+                  "surface-variant": "#34343d",
+                  "on-error-container": "#ffdad6",
+                  "primary": "#c0c1ff",
+                  "secondary-container": "#00a6e0",
+                  "on-surface": "#e4e1ed",
+                  "error-container": "#93000a",
+                  "surface-container-low": "#1b1b23",
+                  "outline": "#908fa0",
+                  "on-secondary-fixed": "#001e2c",
+                  "on-primary": "#1000a9",
+                  "inverse-on-surface": "#303038",
+                  "surface": "#13131b",
+                  "primary-fixed": "#e1e0ff",
+                  "outline-variant": "#464554",
+                  "on-primary-fixed": "#07006c",
+                  "on-secondary": "#00354a",
+                  "tertiary-fixed": "#ffdcc5",
+                  "on-tertiary-fixed-variant": "#703700",
+                  "surface-tint": "#c0c1ff",
+                  "background": "#13131b",
+                  "surface-bright": "#393841",
+                  "tertiary-container": "#d97721",
+                  "on-tertiary-fixed": "#301400",
+                  "surface-container-high": "#292932",
+                  "on-error": "#690005",
+                  "on-secondary-fixed-variant": "#004c69",
+                  "primary-container": "#8083ff",
+                  "on-background": "#e4e1ed",
+                  "on-primary-fixed-variant": "#2f2ebe"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.125rem",
+                  "lg": "0.25rem",
+                  "xl": "0.5rem",
+                  "full": "0.75rem"
+          },
+          "spacing": {
+                  "base": "4px",
+                  "gutter": "16px",
+                  "sm": "8px",
+                  "margin": "24px",
+                  "xs": "4px",
+                  "md": "16px",
+                  "xl": "32px",
+                  "lg": "24px"
+          },
+          "fontFamily": {
+                  "headline-sm": ["Inter"],
+                  "body-md": ["Inter"],
+                  "headline-md": ["Inter"],
+                  "headline-lg": ["Inter"],
+                  "code-md": ["JetBrains Mono"],
+                  "body-lg": ["Inter"],
+                  "label-sm": ["JetBrains Mono"]
+          },
+          "fontSize": {
+                  "headline-sm": ["18px", {"lineHeight": "26px", "fontWeight": "600"}],
+                  "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                  "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                  "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                  "code-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+                  "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                  "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Side Navigation Bar -->
+<aside class="fixed left-0 top-0 h-full w-[220px] bg-surface border-r border-outline-variant flex flex-col pt-gutter pb-margin z-50">
+<div class="px-gutter mb-xl">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">CodePair</span>
+<p class="text-[10px] uppercase tracking-widest text-outline">Interview Suite</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Inactive Navigation Item -->
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined" data-icon="code">code</span>
+<span class="font-body-md">Problems</span>
+</a>
+<!-- Active Navigation Item -->
+<a class="border-l-4 border-primary bg-surface-container-high text-on-surface px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-body-md">My Sessions</span>
+</a>
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="font-body-md">Leaderboard</span>
+</a>
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+<div class="px-gutter mt-auto pt-gutter border-t border-outline-variant/30">
+<div class="flex items-center gap-3">
+<img alt="User Profile" class="w-8 h-8 rounded-full bg-surface-container-highest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaenWdW1mfA_B9kT0r-UC_15CPaigrsGImvgdX3AVe2H9qStWttsoORdtaxMDNwgnIqQkN4m_fEFb4RJfadsIgVWxBBCAOVtUg3u5BRrnyFuk3rcw5-5Etikynoad3jVgCXfch0LAIE9O3yOrxUaVeyXd4Esh1D51gyVijD3hewvvCEK4EQK4DyS_xaoUWoqfqexKjj6WGG-BLGMq90DGJoumzJ873L4MrMGfeBYnYfyEOZuxqrbv23GycEX94x_CdTVkqdw8B63g"/>
+<div class="overflow-hidden">
+<p class="font-label-sm truncate">Alex Chen</p>
+<p class="text-[10px] text-on-surface-variant truncate">Pro Tier</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[220px] min-h-screen flex flex-col">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center px-margin h-[56px] bg-surface-container border-b border-outline-variant sticky top-0 z-40">
+<h1 class="font-headline-sm text-headline-sm text-on-surface">My Sessions</h1>
+<div class="flex items-center gap-md">
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-bright transition-colors rounded-lg">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-bright transition-colors rounded-lg">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+</div>
+</header>
+<!-- Canvas -->
+<div class="p-margin flex-1">
+<!-- Statistics / Summary Cards (Visual Interest Layer) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-margin">
+<div class="bg-surface-container-low border border-outline-variant p-gutter rounded-xl">
+<p class="text-on-surface-variant font-label-sm uppercase tracking-wider mb-xs">Total Sessions</p>
+<p class="font-headline-md text-on-surface">128</p>
+</div>
+<div class="bg-surface-container-low border border-outline-variant p-gutter rounded-xl">
+<p class="text-on-surface-variant font-label-sm uppercase tracking-wider mb-xs">Success Rate</p>
+<p class="font-headline-md text-secondary">92.4%</p>
+</div>
+<div class="bg-surface-container-low border border-outline-variant p-gutter rounded-xl">
+<p class="text-on-surface-variant font-label-sm uppercase tracking-wider mb-xs">Avg. Runtime</p>
+<p class="font-headline-md text-on-surface">42ms</p>
+</div>
+<div class="bg-surface-container-low border border-outline-variant p-gutter rounded-xl">
+<p class="text-on-surface-variant font-label-sm uppercase tracking-wider mb-xs">Preferred Role</p>
+<p class="font-headline-md text-primary">Interviewer</p>
+</div>
+</div>
+<!-- Filters & Actions Header -->
+<div class="bg-surface-container-low border border-outline-variant rounded-t-xl p-gutter flex flex-wrap items-center justify-between gap-gutter">
+<div class="flex flex-wrap items-center gap-sm">
+<!-- Filter Selectors -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-highest border border-outline-variant text-on-surface font-body-md rounded-lg pl-3 pr-10 py-1.5 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all cursor-pointer">
+<option>All Dates</option>
+<option>Last 7 Days</option>
+<option>Last 30 Days</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" style="font-size: 18px;">expand_more</span>
+</div>
+<div class="relative">
+<select class="appearance-none bg-surface-container-highest border border-outline-variant text-on-surface font-body-md rounded-lg pl-3 pr-10 py-1.5 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all cursor-pointer">
+<option>All Languages</option>
+<option>Python</option>
+<option>TypeScript</option>
+<option>Java</option>
+<option>C++</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" style="font-size: 18px;">expand_more</span>
+</div>
+<div class="relative">
+<select class="appearance-none bg-surface-container-highest border border-outline-variant text-on-surface font-body-md rounded-lg pl-3 pr-10 py-1.5 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all cursor-pointer">
+<option>All Status</option>
+<option>Accepted</option>
+<option>Wrong Answer</option>
+<option>TLE</option>
+<option>Runtime Error</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" style="font-size: 18px;">expand_more</span>
+</div>
+<div class="relative">
+<select class="appearance-none bg-surface-container-highest border border-outline-variant text-on-surface font-body-md rounded-lg pl-3 pr-10 py-1.5 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all cursor-pointer">
+<option>All Roles</option>
+<option>Interviewer</option>
+<option>Candidate</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" style="font-size: 18px;">expand_more</span>
+</div>
+</div>
+<button class="bg-surface-container-highest border border-outline-variant text-on-surface px-lg py-1.5 rounded-lg font-body-md flex items-center gap-2 hover:bg-surface-bright transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-[18px]">download</span>
+          Export CSV
+        </button>
+</div>
+<!-- Session History Table -->
+<div class="overflow-x-auto bg-surface-container-low border-x border-b border-outline-variant rounded-b-xl">
+<table class="w-full text-left border-collapse min-w-[1000px]">
+<thead>
+<tr class="border-b border-outline-variant/30 text-on-surface-variant font-label-sm uppercase tracking-wider">
+<th class="px-gutter py-4 font-semibold">Date &amp; Time</th>
+<th class="px-gutter py-4 font-semibold">Problem</th>
+<th class="px-gutter py-4 font-semibold">Language</th>
+<th class="px-gutter py-4 font-semibold">Role</th>
+<th class="px-gutter py-4 font-semibold">Status</th>
+<th class="px-gutter py-4 font-semibold text-right">Runtime</th>
+<th class="px-gutter py-4 font-semibold text-right">Memory</th>
+<th class="px-gutter py-4 font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Table Row 1: Accepted -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="px-gutter py-4">
+<div class="flex flex-col">
+<span class="text-on-surface">Oct 24, 2023</span>
+<span class="text-on-surface-variant text-[12px]">14:20 PM</span>
+</div>
+</td>
+<td class="px-gutter py-4">
+<div class="flex items-center gap-2">
+<span class="font-medium text-on-surface">Binary Tree Maximum Path Sum</span>
+<span class="bg-error/10 text-error px-1.5 py-0.5 rounded text-[10px] font-bold uppercase">Hard</span>
+</div>
+</td>
+<td class="px-gutter py-4">
+<span class="font-code-md text-secondary">Python 3.11</span>
+</td>
+<td class="px-gutter py-4 text-on-surface-variant">Candidate</td>
+<td class="px-gutter py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary-fixed-dim border border-primary/20 text-[12px] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_rgba(192,193,255,0.8)]"></span>
+                  Accepted
+                </span>
+</td>
+<td class="px-gutter py-4 text-right font-code-md">12 ms</td>
+<td class="px-gutter py-4 text-right font-code-md">14.2 MB</td>
+<td class="px-gutter py-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100 p-1">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Table Row 2: Wrong Answer -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="px-gutter py-4">
+<div class="flex flex-col">
+<span class="text-on-surface">Oct 23, 2023</span>
+<span class="text-on-surface-variant text-[12px]">09:15 AM</span>
+</div>
+</td>
+<td class="px-gutter py-4">
+<div class="flex items-center gap-2">
+<span class="font-medium text-on-surface">LRU Cache</span>
+<span class="bg-tertiary/10 text-tertiary px-1.5 py-0.5 rounded text-[10px] font-bold uppercase">Med</span>
+</div>
+</td>
+<td class="px-gutter py-4">
+<span class="font-code-md text-secondary">TypeScript</span>
+</td>
+<td class="px-gutter py-4 text-on-surface-variant">Interviewer</td>
+<td class="px-gutter py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error/10 text-error border border-error/20 text-[12px] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                  Wrong Answer
+                </span>
+</td>
+<td class="px-gutter py-4 text-right font-code-md">--</td>
+<td class="px-gutter py-4 text-right font-code-md">--</td>
+<td class="px-gutter py-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100 p-1">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Table Row 3: TLE -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="px-gutter py-4">
+<div class="flex flex-col">
+<span class="text-on-surface">Oct 21, 2023</span>
+<span class="text-on-surface-variant text-[12px]">18:45 PM</span>
+</div>
+</td>
+<td class="px-gutter py-4">
+<div class="flex items-center gap-2">
+<span class="font-medium text-on-surface">Longest Valid Parentheses</span>
+<span class="bg-error/10 text-error px-1.5 py-0.5 rounded text-[10px] font-bold uppercase">Hard</span>
+</div>
+</td>
+<td class="px-gutter py-4">
+<span class="font-code-md text-secondary">C++ 20</span>
+</td>
+<td class="px-gutter py-4 text-on-surface-variant">Candidate</td>
+<td class="px-gutter py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-container/20 text-tertiary border border-tertiary/20 text-[12px] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                  TLE
+                </span>
+</td>
+<td class="px-gutter py-4 text-right font-code-md">&gt; 1000 ms</td>
+<td class="px-gutter py-4 text-right font-code-md">2.4 MB</td>
+<td class="px-gutter py-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100 p-1">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Table Row 4: Error -->
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="px-gutter py-4">
+<div class="flex flex-col">
+<span class="text-on-surface">Oct 20, 2023</span>
+<span class="text-on-surface-variant text-[12px]">11:00 AM</span>
+</div>
+</td>
+<td class="px-gutter py-4">
+<div class="flex items-center gap-2">
+<span class="font-medium text-on-surface">Valid Anagram</span>
+<span class="bg-secondary/10 text-secondary px-1.5 py-0.5 rounded text-[10px] font-bold uppercase">Easy</span>
+</div>
+</td>
+<td class="px-gutter py-4">
+<span class="font-code-md text-secondary">Go 1.21</span>
+</td>
+<td class="px-gutter py-4 text-on-surface-variant">Interviewer</td>
+<td class="px-gutter py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-highest text-on-surface-variant border border-outline-variant text-[12px] font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
+                  Runtime Error
+                </span>
+</td>
+<td class="px-gutter py-4 text-right font-code-md">--</td>
+<td class="px-gutter py-4 text-right font-code-md">--</td>
+<td class="px-gutter py-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100 p-1">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination (Footer) -->
+<div class="flex items-center justify-between mt-gutter">
+<p class="text-on-surface-variant text-[12px]">Showing 1-10 of 128 sessions</p>
+<div class="flex gap-2">
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined" style="font-size: 18px;">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center bg-primary text-on-primary rounded-lg font-medium text-[12px]">1</button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-lg text-on-surface hover:bg-surface-container-low transition-colors font-medium text-[12px]">2</button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-lg text-on-surface hover:bg-surface-container-low transition-colors font-medium text-[12px]">3</button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined" style="font-size: 18px;">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Background Decorative Element -->
+<div class="fixed bottom-0 right-0 p-margin opacity-10 pointer-events-none select-none z-0">
+<span class="material-symbols-outlined text-[240px] text-primary" data-icon="history">history</span>
+</div>
+</body></html>

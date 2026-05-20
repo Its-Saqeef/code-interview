@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed-dim": "#c0c1ff",
+            "on-secondary-container": "#00374d",
+            "secondary": "#7bd0ff",
+            "on-surface-variant": "#c7c4d7",
+            "on-tertiary": "#4f2500",
+            "inverse-primary": "#494bd6",
+            "on-tertiary-container": "#452000",
+            "inverse-surface": "#e4e1ed",
+            "surface-container": "#1f1f27",
+            "surface-container-lowest": "#0d0d15",
+            "on-primary-container": "#0d0096",
+            "secondary-fixed": "#c4e7ff",
+            "surface-dim": "#13131b",
+            "tertiary-fixed-dim": "#ffb783",
+            "secondary-fixed-dim": "#7bd0ff",
+            "surface-container-highest": "#34343d",
+            "error": "#ffb4ab",
+            "tertiary": "#ffb783",
+            "surface-variant": "#34343d",
+            "on-error-container": "#ffdad6",
+            "primary": "#c0c1ff",
+            "secondary-container": "#00a6e0",
+            "on-surface": "#e4e1ed",
+            "error-container": "#93000a",
+            "surface-container-low": "#1b1b23",
+            "outline": "#908fa0",
+            "on-secondary-fixed": "#001e2c",
+            "on-primary": "#1000a9",
+            "inverse-on-surface": "#303038",
+            "surface": "#13131b",
+            "primary-fixed": "#e1e0ff",
+            "outline-variant": "#464554",
+            "on-primary-fixed": "#07006c",
+            "on-secondary": "#00354a",
+            "tertiary-fixed": "#ffdcc5",
+            "on-tertiary-fixed-variant": "#703700",
+            "surface-tint": "#c0c1ff",
+            "background": "#13131b",
+            "surface-bright": "#393841",
+            "tertiary-container": "#d97721",
+            "on-tertiary-fixed": "#301400",
+            "surface-container-high": "#292932",
+            "on-error": "#690005",
+            "on-secondary-fixed-variant": "#004c69",
+            "primary-container": "#8083ff",
+            "on-background": "#e4e1ed",
+            "on-primary-fixed-variant": "#2f2ebe"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "base": "4px",
+            "gutter": "16px",
+            "sm": "8px",
+            "margin": "24px",
+            "xs": "4px",
+            "md": "16px",
+            "xl": "32px",
+            "lg": "24px"
+          },
+          "fontFamily": {
+            "headline-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "code-md": ["JetBrains Mono"],
+            "body-lg": ["Inter"],
+            "label-sm": ["JetBrains Mono"]
+          },
+          "fontSize": {
+            "headline-sm": ["18px", {"lineHeight": "26px", "fontWeight": "600"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+            "code-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body { background-color: #13131b; color: #e4e1ed; }
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #464554; border-radius: 2px; }
+    .code-editor-bg { background: #0F1117; }
+  </style>
+</head>
+<body class="font-body-md text-body-md overflow-hidden h-screen flex flex-col">
+<!-- Top Navigation Header -->
+<header class="flex justify-between items-center px-gutter w-full z-50 docked full-width top-0 h-[56px] bg-surface-container-highest border-b border-outline-variant shadow-sm">
+<div class="flex items-center gap-4">
+<span class="font-headline-sm text-headline-sm font-black text-primary">Interview Session</span>
+<div class="h-4 w-px bg-outline-variant"></div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">Optimal Path Search</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">Oct 24, 2023 • 45:00 Duration</span>
+</div>
+</div>
+<div class="flex items-center gap-xl">
+<div class="flex items-center gap-sm">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Accepted
+        </span>
+</div>
+<div class="flex items-center gap-sm">
+<button class="hover:text-secondary-fixed-dim transition-all text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined" data-icon="videocam">videocam</span>
+</button>
+<button class="hover:text-secondary-fixed-dim transition-all text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined" data-icon="mic">mic</span>
+</button>
+<button class="bg-primary text-on-primary font-label-sm text-label-sm px-4 py-2 rounded-lg hover:brightness-110 active:brightness-110 transition-all">
+          End Session
+        </button>
+</div>
+</div>
+</header>
+<!-- Main Content Layout -->
+<main class="flex-1 flex overflow-hidden">
+<!-- Left Column: Code View -->
+<section class="flex-1 border-r border-outline-variant flex flex-col code-editor-bg">
+<div class="h-[40px] flex items-center px-gutter bg-surface-container-low border-b border-outline-variant justify-between">
+<div class="flex items-center gap-4">
+<span class="font-label-sm text-label-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-tertiary">terminal</span>
+            solution.py
+          </span>
+</div>
+<div class="flex gap-4">
+<button class="text-on-surface-variant hover:text-on-surface flex items-center gap-1 text-[12px]">
+<span class="material-symbols-outlined text-[16px]">content_copy</span> Copy
+          </button>
+</div>
+</div>
+<div class="flex-1 overflow-auto custom-scrollbar p-gutter font-code-md text-code-md leading-relaxed">
+<pre class="flex gap-gutter"><div class="text-outline-variant text-right select-none pr-4 border-r border-outline-variant/20">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</div><code class="text-on-surface"><span class="text-secondary">import</span> collections
+
+<span class="text-secondary">def</span> <span class="text-primary">shortest_path</span>(grid, start, end):
+    <span class="text-outline-variant"># BFS Implementation for grid search</span>
+    rows, cols = len(grid), len(grid[0])
+    queue = collections.deque([(start, 0)])
+    visited = set([start])
+    
+    <span class="text-secondary">while</span> queue:
+        (r, c), dist = queue.popleft()
+        <span class="text-secondary">if</span> (r, c) == end:
+            <span class="text-secondary">return</span> dist
+            
+        <span class="text-secondary">for</span> dr, dc <span class="text-secondary">in</span> [(0,1), (0,-1), (1,0), (-1,0)]:
+            nr, nc = r + dr, c + dc
+            <span class="text-secondary">if</span> 0 &lt;= nr &lt; rows <span class="text-secondary">and</span> 0 &lt;= nc &lt; cols <span class="text-secondary">and</span> grid[nr][nc] == 0:
+                <span class="text-secondary">if</span> (nr, nc) <span class="text-secondary">not in</span> visited:
+                    visited.add((nr, nc))
+                    queue.append(((nr, nc), dist + 1))</code></pre>
+</div>
+</section>
+<!-- Right Column: Results & Feedback -->
+<aside class="w-[480px] bg-surface flex flex-col overflow-hidden">
+<!-- Stats Banner -->
+<div class="p-gutter border-b border-outline-variant grid grid-cols-2 gap-sm">
+<div class="bg-surface-container-low p-sm rounded-lg border border-outline-variant/30">
+<p class="text-[10px] text-on-surface-variant uppercase font-bold">Runtime</p>
+<p class="font-headline-sm text-headline-sm text-primary">24ms</p>
+<p class="text-[11px] text-on-surface-variant">Beats 94.2% of Python3</p>
+</div>
+<div class="bg-surface-container-low p-sm rounded-lg border border-outline-variant/30">
+<p class="text-[10px] text-on-surface-variant uppercase font-bold">Memory</p>
+<p class="font-headline-sm text-headline-sm text-secondary">16.4MB</p>
+<p class="text-[11px] text-on-surface-variant">Beats 82.1% of Python3</p>
+</div>
+</div>
+<!-- Scrollable Tabs -->
+<div class="flex-1 overflow-y-auto custom-scrollbar">
+<!-- Test Cases -->
+<div class="p-gutter">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">fact_check</span> TEST CASE RESULTS
+          </h3>
+<div class="space-y-base">
+<div class="flex items-center justify-between p-sm bg-surface-container-high rounded-lg border border-outline-variant/20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+<span class="font-body-md text-body-md">Test Case 1: Minimal Grid</span>
+</div>
+<span class="text-on-surface-variant text-[12px]">0.4ms</span>
+</div>
+<div class="flex items-center justify-between p-sm bg-surface-container-high rounded-lg border border-outline-variant/20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+<span class="font-body-md text-body-md">Test Case 2: Large Maze</span>
+</div>
+<span class="text-on-surface-variant text-[12px]">12.1ms</span>
+</div>
+<div class="flex items-center justify-between p-sm bg-surface-container-high rounded-lg border border-outline-variant/20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+<span class="font-body-md text-body-md">Test Case 3: No Path</span>
+</div>
+<span class="text-on-surface-variant text-[12px]">1.2ms</span>
+</div>
+</div>
+</div>
+<!-- Interviewer Notes -->
+<div class="p-gutter border-t border-outline-variant bg-surface-container-lowest/30">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">rate_review</span> INTERVIEWER NOTES
+          </h3>
+<div class="flex items-start gap-gutter">
+<img alt="Interviewer" class="w-10 h-10 rounded-full border border-outline-variant" data-alt="A professional headshot of a middle-aged tech hiring manager with a friendly expression. He is wearing a minimalist dark shirt, set against a blurred high-end office background with soft bokeh. The lighting is sophisticated and clean, matching a professional developer-centric UI theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByahFX34YgfJ5iEJ8URXBLGyjdQDsBBZwkhe3FXDE3cEBHKzaHoMBCewEguEaOgliiFPjKvSDageCgOwV2ok9vDOw-_pk3XTkQtHByMPD5mv4rMPNOL8uZ7Tk1idEvWZyV8d8ALFySBxDRYpjn3ykSnDZqysTEZniM0BSeU6KsXh_4hjmUopvBKrFijS26_d_swrsQ9qs9LcU3vVBckdaLJNdv-6tWeeGSiu0zCSbStuB9gk6No0MPrVahcD09ognoNBvsWa_VyBQ"/>
+<div class="flex-1">
+<p class="font-label-sm text-label-sm text-on-surface mb-1">David Chen <span class="text-on-surface-variant font-normal">• Lead Engineer</span></p>
+<p class="text-body-md text-on-surface-variant leading-relaxed italic">
+                "Solid understanding of BFS. The candidate was able to explain the space complexity trade-offs when using a set for visited nodes versus in-place modification. Clean code structure, although could have used more descriptive variable names for directions."
+              </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="p-gutter border-t border-outline-variant flex gap-sm bg-surface-container">
+<button class="flex-1 flex items-center justify-center gap-2 px-4 py-2 border border-outline-variant rounded-lg text-on-surface hover:bg-surface-bright transition-all">
+<span class="material-symbols-outlined text-[20px]">download</span>
+          Download Report
+        </button>
+<button class="flex-1 flex items-center justify-center gap-2 px-4 py-2 border border-outline-variant rounded-lg text-on-surface hover:bg-surface-bright transition-all">
+<span class="material-symbols-outlined text-[20px]">share</span>
+          Share
+        </button>
+</div>
+</aside>
+</main>
+<!-- Playback Timeline Bar -->
+<footer class="h-[72px] bg-surface-container-highest border-t border-outline-variant px-margin flex items-center gap-gutter">
+<button class="w-10 h-10 flex items-center justify-center text-primary hover:bg-primary/10 rounded-full transition-all">
+<span class="material-symbols-outlined text-[32px]">play_arrow</span>
+</button>
+<div class="flex-1 flex flex-col gap-2">
+<div class="relative w-full h-1.5 bg-outline-variant/30 rounded-full overflow-hidden">
+<div class="absolute left-0 top-0 h-full w-[85%] bg-primary"></div>
+<!-- Markers for key events -->
+<div class="absolute left-[15%] top-0 h-full w-1 bg-white/50" title="Started Code"></div>
+<div class="absolute left-[45%] top-0 h-full w-1 bg-white/50" title="First Run"></div>
+<div class="absolute left-[70%] top-0 h-full w-1 bg-white/50" title="Optimization"></div>
+</div>
+<div class="flex justify-between text-[10px] text-on-surface-variant uppercase font-bold tracking-tighter">
+<span>00:00</span>
+<div class="flex gap-4">
+<span class="text-on-surface">38:15 / 45:00</span>
+</div>
+<span>Playback speed: 1.5x</span>
+</div>
+</div>
+<div class="flex items-center gap-4 pl-gutter border-l border-outline-variant">
+<button class="text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined">fullscreen</span>
+</button>
+</div>
+</footer>
+</body></html>

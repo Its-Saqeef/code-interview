@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CodePair - Problem Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed-dim": "#c0c1ff",
+            "on-secondary-container": "#00374d",
+            "secondary": "#7bd0ff",
+            "on-surface-variant": "#c7c4d7",
+            "on-tertiary": "#4f2500",
+            "inverse-primary": "#494bd6",
+            "on-tertiary-container": "#452000",
+            "inverse-surface": "#e4e1ed",
+            "surface-container": "#1f1f27",
+            "surface-container-lowest": "#0d0d15",
+            "on-primary-container": "#0d0096",
+            "secondary-fixed": "#c4e7ff",
+            "surface-dim": "#13131b",
+            "tertiary-fixed-dim": "#ffb783",
+            "secondary-fixed-dim": "#7bd0ff",
+            "surface-container-highest": "#34343d",
+            "error": "#ffb4ab",
+            "tertiary": "#ffb783",
+            "surface-variant": "#34343d",
+            "on-error-container": "#ffdad6",
+            "primary": "#c0c1ff",
+            "secondary-container": "#00a6e0",
+            "on-surface": "#e4e1ed",
+            "error-container": "#93000a",
+            "surface-container-low": "#1b1b23",
+            "outline": "#908fa0",
+            "on-secondary-fixed": "#001e2c",
+            "on-primary": "#1000a9",
+            "inverse-on-surface": "#303038",
+            "surface": "#13131b",
+            "primary-fixed": "#e1e0ff",
+            "outline-variant": "#464554",
+            "on-primary-fixed": "#07006c",
+            "on-secondary": "#00354a",
+            "tertiary-fixed": "#ffdcc5",
+            "on-tertiary-fixed-variant": "#703700",
+            "surface-tint": "#c0c1ff",
+            "background": "#13131b",
+            "surface-bright": "#393841",
+            "tertiary-container": "#d97721",
+            "on-tertiary-fixed": "#301400",
+            "surface-container-high": "#292932",
+            "on-error": "#690005",
+            "on-secondary-fixed-variant": "#004c69",
+            "primary-container": "#8083ff",
+            "on-background": "#e4e1ed",
+            "on-primary-fixed-variant": "#2f2ebe"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "base": "4px",
+            "gutter": "16px",
+            "sm": "8px",
+            "margin": "24px",
+            "xs": "4px",
+            "md": "16px",
+            "xl": "32px",
+            "lg": "24px"
+          },
+          "fontFamily": {
+            "headline-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "code-md": ["JetBrains Mono"],
+            "body-lg": ["Inter"],
+            "label-sm": ["JetBrains Mono"]
+          },
+          "fontSize": {
+            "headline-sm": ["18px", {"lineHeight": "26px", "fontWeight": "600"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+            "code-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #13131b;
+      color: #e4e1ed;
+      -webkit-font-smoothing: antialiased;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #1b1b23;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #464554;
+      border-radius: 2px;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+<body class="flex min-h-screen overflow-hidden">
+<!-- SideNavBar Component -->
+<aside class="fixed left-0 top-0 h-full w-[220px] bg-surface border-r border-outline-variant flex flex-col pt-gutter pb-margin z-40">
+<div class="px-gutter mb-xl">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">CodePair</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-70">Interview Suite</p>
+</div>
+<nav class="flex-grow space-y-1">
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="border-l-4 border-primary bg-surface-container-high text-on-surface px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="code">code</span>
+<span class="font-body-md text-body-md">Problems</span>
+</a>
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-body-md text-body-md">My Sessions</span>
+</a>
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="font-body-md text-body-md">Leaderboard</span>
+</a>
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-gutter pt-gutter border-t border-outline-variant">
+<div class="flex items-center gap-3">
+<img alt="User Profile" class="w-8 h-8 rounded-full border border-outline-variant" data-alt="Close-up portrait of a professional software engineer with a neutral background, rendered in a high-fidelity digital art style. The lighting is soft and cinematic, using a palette of cool blues and deep charcoal tones consistent with a high-end tech platform. The composition is centered, focusing on technical professional identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDymENMqHsICjsBuu7gVgRBwH12IFx6ydDashR-s5IpnW7F97bw2BRCNs6cAKk3iaWoGTdaWCr-E5cXv32yI3YA5RQjOiTRkK1J7yKGoca3u9CLYNssNhBCjh2Ig--CcJ87MTBvh18inPAcGmkfkSVNjBgrCwrFfwMshu3_rnaBQv0VGQeqSw-aOv6pp7Q3RUnOC0RIN8jO1hrhf29cA4oamE_IQ98IgxFjJ3vSJENIJfEdcQhu7_aIdyxTmrPuIzlpvrjmH0KGVRM"/>
+<div class="overflow-hidden">
+<p class="font-body-md text-body-md font-semibold truncate text-on-surface">Alex Rivera</p>
+<p class="text-[10px] text-on-surface-variant">Standard Tier</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="ml-[220px] flex flex-col w-[calc(100%-220px)] h-screen">
+<!-- TopAppBar Component -->
+<header class="flex justify-between items-center px-margin h-[56px] bg-surface-container border-b border-outline-variant sticky top-0 z-30">
+<div class="flex items-center gap-4">
+<h1 class="font-headline-sm text-headline-sm text-on-surface">Problem Library</h1>
+</div>
+<div class="flex items-center gap-gutter">
+<button class="hover:bg-surface-bright transition-colors p-2 rounded-full text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="hover:bg-surface-bright transition-colors p-2 rounded-full text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-2">
+<img alt="User Avatar" class="w-8 h-8 rounded-full border border-outline-variant" data-alt="Minimalist abstract profile representation with a sleek tech aesthetic. The colors are deep violet and vibrant indigo, matching the dark mode UI system. The design is crisp and modern, featuring geometric patterns that suggest data processing and technical expertise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOzA5OFHZTugUKgXAsNghmkPQuAwery4qfvKVOpJnBW5Xjxm57inO7Bf_2x99Gn3h0BYBtNm-PE6yvoXnUGRLEbcC41q9zP8DNtNPlHthlIr_PXUHxtB_llb0NjVzkPq5oR9H3UZBsOY-e8wWmnX-n7bwOPv7s6srLnMVajg6Bc4-TD93Fzf0dpqaKplWomISuh6WQsVNWV2xxZIR_LSw5z9C-3JDK85CvqF3fHXkuVHsqWHixexbPADT7GIITqZufDjgBeJnsQhw"/>
+</div>
+</div>
+</header>
+<!-- Content Layout: Sub-sidebar + Main Grid -->
+<div class="flex flex-grow overflow-hidden">
+<!-- Filter Sidebar (Left Sub-sidebar) -->
+<aside class="w-[280px] bg-surface-container-low border-r border-outline-variant p-gutter overflow-y-auto custom-scrollbar">
+<div class="space-y-xl">
+<!-- Difficulty Section -->
+<div>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-md tracking-widest">Difficulty</h3>
+<div class="space-y-sm">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-checkbox bg-surface-container-highest border-outline-variant text-primary-container rounded focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Easy</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-checkbox bg-surface-container-highest border-outline-variant text-primary-container rounded focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Medium</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-checkbox bg-surface-container-highest border-outline-variant text-primary-container rounded focus:ring-primary h-4 w-4" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Hard</span>
+</label>
+</div>
+</div>
+<!-- Tags Multi-select Section -->
+<div>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-md tracking-widest">Tags</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-highest border border-primary text-primary font-body-md text-[12px] rounded-full cursor-pointer hover:bg-primary-container/20 transition-all">Arrays</span>
+<span class="px-3 py-1 bg-surface-container-highest border border-outline-variant text-on-surface-variant font-body-md text-[12px] rounded-full cursor-pointer hover:border-primary transition-all">Strings</span>
+<span class="px-3 py-1 bg-surface-container-highest border border-outline-variant text-on-surface-variant font-body-md text-[12px] rounded-full cursor-pointer hover:border-primary transition-all">Dynamic Programming</span>
+<span class="px-3 py-1 bg-surface-container-highest border border-outline-variant text-on-surface-variant font-body-md text-[12px] rounded-full cursor-pointer hover:border-primary transition-all">Graphs</span>
+<span class="px-3 py-1 bg-surface-container-highest border border-outline-variant text-on-surface-variant font-body-md text-[12px] rounded-full cursor-pointer hover:border-primary transition-all">Trees</span>
+<span class="px-3 py-1 bg-surface-container-highest border border-outline-variant text-on-surface-variant font-body-md text-[12px] rounded-full cursor-pointer hover:border-primary transition-all">Recursion</span>
+</div>
+</div>
+<!-- Status Section -->
+<div>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-md tracking-widest">Status</h3>
+<div class="space-y-sm">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-radio bg-surface-container-highest border-outline-variant text-primary-container focus:ring-primary h-4 w-4" name="status" type="radio"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary">All Problems</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-radio bg-surface-container-highest border-outline-variant text-primary-container focus:ring-primary h-4 w-4" name="status" type="radio"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary">Solved</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-radio bg-surface-container-highest border-outline-variant text-primary-container focus:ring-primary h-4 w-4" name="status" type="radio"/>
+<span class="font-body-md text-body-md text-on-surface group-hover:text-primary">Unsolved</span>
+</label>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Problem List Area -->
+<main class="flex-grow flex flex-col bg-surface-dim overflow-hidden">
+<!-- Header Controls: Search & Sort -->
+<div class="p-gutter border-b border-outline-variant bg-surface-container-lowest flex items-center justify-between gap-gutter">
+<div class="relative flex-grow max-w-2xl">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full bg-surface-container border border-outline-variant text-on-surface rounded-xl pl-10 pr-4 py-2 font-body-md focus:border-primary focus:ring-1 focus:ring-primary transition-all outline-none" placeholder="Search problems by name, tag, or ID..." type="text"/>
+</div>
+<div class="flex items-center gap-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant whitespace-nowrap">Sort by:</span>
+<select class="bg-surface-container border border-outline-variant text-on-surface rounded-lg px-3 py-2 font-body-md focus:border-primary outline-none">
+<option>Newest first</option>
+<option>Hardest first</option>
+<option>Easiest first</option>
+<option>Popularity</option>
+</select>
+</div>
+</div>
+<!-- Scrollable Grid -->
+<div class="flex-grow overflow-y-auto p-gutter custom-scrollbar">
+<div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-gutter">
+<!-- Problem Card 1 -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-md flex flex-col hover:border-primary transition-colors group">
+<div class="flex justify-between items-start mb-md">
+<h4 class="font-headline-sm text-[16px] text-on-surface group-hover:text-primary transition-colors">LRU Cache Implementation</h4>
+<span class="px-2 py-0.5 bg-tertiary-container/10 border border-tertiary-container text-tertiary font-label-sm text-[10px] rounded uppercase">Hard</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-gutter">
+<span class="text-[10px] font-label-sm text-on-secondary-fixed-variant bg-secondary-fixed/20 px-2 py-0.5 rounded">Design</span>
+<span class="text-[10px] font-label-sm text-on-secondary-fixed-variant bg-secondary-fixed/20 px-2 py-0.5 rounded">Hash Table</span>
+</div>
+<div class="mt-auto flex items-center justify-between pt-gutter border-t border-outline-variant">
+<div class="flex flex-col">
+<span class="text-[10px] font-label-sm text-on-surface-variant uppercase">Acceptance</span>
+<span class="font-code-md text-code-md text-secondary">41.2%</span>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-body-md px-4 py-2 rounded-lg transition-all active:scale-95">Solve</button>
+</div>
+</div>
+<!-- Problem Card 2 -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-md flex flex-col hover:border-primary transition-colors group">
+<div class="flex justify-between items-start mb-md">
+<h4 class="font-headline-sm text-[16px] text-on-surface group-hover:text-primary transition-colors">Word Break II</h4>
+<span class="px-2 py-0.5 bg-tertiary-container/10 border border-tertiary-container text-tertiary font-label-sm text-[10px] rounded uppercase">Hard</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-gutter">
+<span class="text-[10px] font-label-sm text-on-secondary-fixed-variant bg-secondary-fixed/20 px-2 py-0.5 rounded">DP</span>
+<span class="text-[10px] font-label-sm text-on-secondary-fixed-variant bg-secondary-fixed/20 px-2 py-0.5 rounded">Backtracking</span>
+</div>
+<div class="mt-auto flex items-center justify-between pt-gutter border-t border-outline-variant">
+<div class="flex flex-col">
+<span class="text-[10px] font-label-sm text-on-surface-variant uppercase">Acceptance</span>
+<span class="font-code-md text-code-md text-secondary">58.7%</span>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-body-md px-4 py-2 rounded-lg transition-all active:scale-95">Solve</button>
+</div>
+</div>
+<!-- Problem Card 3 -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-md flex flex-col hover:border-primary transition-colors group">
+<div class="flex justify-between items-start mb-md">
+<h4 class="font-headline-sm text-[16px] text-on-surface group-hover:text-primary transition-colors">Subsets</h4>
+<span class="px-2 py-0.5 bg-surface-container-highest border border-outline text-on-surface font-label-sm text-[10px] rounded uppercase">Medium</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-gutter">
+<span class="text-[10px] font-label-sm text-on-secondary-fixed-variant bg-secondary-fixed/20 px-2 py-0.5 rounded">Arrays</span>
+<span class="text-[10px] font-label-sm text-on-secondary-fixed-variant bg-secondary-fixed/20 px-2 py-0.5 rounded">Bitmask</span>
+</div>
+<div class="mt-auto flex items-center justify-between pt-gutter border-t border-outline-variant">
+<div class="flex flex-col">
+<span class="text-[10px] font-label-sm text-on-surface-variant uppercase">Acceptance</span>
+<span class="font-code-md text-code-md text-secondary">76.3%</span>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-body-md px-4 py-2 rounded-lg transition-all active:scale-95">Solve</button>
+</div>
+</div>
+<!-- Problem Card 4 -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-md flex flex-col hover:border-primary transition-colors group">
+<div class="flex justify-between items-start mb-md">
+<h4 class="font-headline-sm text-[16px] text-on-surface group-hover:text-primary transition-colors">Valid Parentheses</h4>
+<span class="px-2 py-0.5 bg-secondary-container/10 border border-secondary-container text-secondary font-label-sm text-[10px] rounded uppercase">Easy</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-gutter">
+<span class="text-[10px] font-label-sm text-on-secondary-fixed-variant bg-secondary-fixed/20 px-2 py-0.5 rounded">Stack</span>
+<span class="text-[10px] font-label-sm text-on-secondary-fixed-variant bg-secondary-fixed/20 px-2 py-0.5 rounded">Strings</span>
+</div>
+<div class="mt-auto flex items-center justify-between pt-gutter border-t border-outline-variant">
+<div class="flex flex-col">
+<span class="text-[10px] font-label-sm text-on-surface-variant uppercase">Acceptance</span>
+<span class="font-code-md text-code-md text-secondary">92.1%</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<button class="bg-surface-container-highest hover:bg-surface-bright text-on-surface font-body-md px-4 py-2 rounded-lg border border-outline-variant transition-all">Review</button>
+</div>
+</div>
+</div>
+<!-- Problem Card 5 -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-md flex flex-col hover:border-primary transition-colors group">
+<div class="flex justify-between items-start mb-md">
+<h4 class="font-headline-sm text-[16px] text-on-surface group-hover:text-primary transition-colors">Network Delay Time</h4>
+<span class="px-2 py-0.5 bg-surface-container-highest border border-outline text-on-surface font-label-sm text-[10px] rounded uppercase">Medium</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-gutter">
+<span class="text-[10px] font-label-sm text-on-secondary-fixed-variant bg-secondary-fixed/20 px-2 py-0.5 rounded">Graphs</span>
+<span class="text-[10px] font-label-sm text-on-secondary-fixed-variant bg-secondary-fixed/20 px-2 py-0.5 rounded">Heap</span>
+</div>
+<div class="mt-auto flex items-center justify-between pt-gutter border-t border-outline-variant">
+<div class="flex flex-col">
+<span class="text-[10px] font-label-sm text-on-surface-variant uppercase">Acceptance</span>
+<span class="font-code-md text-code-md text-secondary">52.8%</span>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-body-md px-4 py-2 rounded-lg transition-all active:scale-95">Solve</button>
+</div>
+</div>
+<!-- Problem Card 6 -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-md flex flex-col hover:border-primary transition-colors group">
+<div class="flex justify-between items-start mb-md">
+<h4 class="font-headline-sm text-[16px] text-on-surface group-hover:text-primary transition-colors">Rotate Image</h4>
+<span class="px-2 py-0.5 bg-surface-container-highest border border-outline text-on-surface font-label-sm text-[10px] rounded uppercase">Medium</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-gutter">
+<span class="text-[10px] font-label-sm text-on-secondary-fixed-variant bg-secondary-fixed/20 px-2 py-0.5 rounded">Arrays</span>
+<span class="text-[10px] font-label-sm text-on-secondary-fixed-variant bg-secondary-fixed/20 px-2 py-0.5 rounded">Math</span>
+</div>
+<div class="mt-auto flex items-center justify-between pt-gutter border-t border-outline-variant">
+<div class="flex flex-col">
+<span class="text-[10px] font-label-sm text-on-surface-variant uppercase">Acceptance</span>
+<span class="font-code-md text-code-md text-secondary">71.0%</span>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-body-md px-4 py-2 rounded-lg transition-all active:scale-95">Solve</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination Footer -->
+<footer class="px-margin py-md border-t border-outline-variant bg-surface-container flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface-variant">Showing 1-12 of 842 problems</span>
+<div class="flex items-center gap-2">
+<button class="p-2 border border-outline-variant rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<div class="flex items-center">
+<button class="w-10 h-10 bg-primary text-on-primary font-body-md rounded-lg">1</button>
+<button class="w-10 h-10 text-on-surface hover:bg-surface-container-high font-body-md rounded-lg transition-colors">2</button>
+<button class="w-10 h-10 text-on-surface hover:bg-surface-container-high font-body-md rounded-lg transition-colors">3</button>
+<span class="mx-2 text-on-surface-variant">...</span>
+<button class="w-10 h-10 text-on-surface hover:bg-surface-container-high font-body-md rounded-lg transition-colors">71</button>
+</div>
+<button class="p-2 border border-outline-variant rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</footer>
+</main>
+</div>
+</div>
+</body></html>

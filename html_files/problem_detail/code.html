@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Problem Detail - CodePair</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed-dim": "#c0c1ff",
+                      "on-secondary-container": "#00374d",
+                      "secondary": "#7bd0ff",
+                      "on-surface-variant": "#c7c4d7",
+                      "on-tertiary": "#4f2500",
+                      "inverse-primary": "#494bd6",
+                      "on-tertiary-container": "#452000",
+                      "inverse-surface": "#e4e1ed",
+                      "surface-container": "#1f1f27",
+                      "surface-container-lowest": "#0d0d15",
+                      "on-primary-container": "#0d0096",
+                      "secondary-fixed": "#c4e7ff",
+                      "surface-dim": "#13131b",
+                      "tertiary-fixed-dim": "#ffb783",
+                      "secondary-fixed-dim": "#7bd0ff",
+                      "surface-container-highest": "#34343d",
+                      "error": "#ffb4ab",
+                      "tertiary": "#ffb783",
+                      "surface-variant": "#34343d",
+                      "on-error-container": "#ffdad6",
+                      "primary": "#c0c1ff",
+                      "secondary-container": "#00a6e0",
+                      "on-surface": "#e4e1ed",
+                      "error-container": "#93000a",
+                      "surface-container-low": "#1b1b23",
+                      "outline": "#908fa0",
+                      "on-secondary-fixed": "#001e2c",
+                      "on-primary": "#1000a9",
+                      "inverse-on-surface": "#303038",
+                      "surface": "#13131b",
+                      "primary-fixed": "#e1e0ff",
+                      "outline-variant": "#464554",
+                      "on-primary-fixed": "#07006c",
+                      "on-secondary": "#00354a",
+                      "tertiary-fixed": "#ffdcc5",
+                      "on-tertiary-fixed-variant": "#703700",
+                      "surface-tint": "#c0c1ff",
+                      "background": "#13131b",
+                      "surface-bright": "#393841",
+                      "tertiary-container": "#d97721",
+                      "on-tertiary-fixed": "#301400",
+                      "surface-container-high": "#292932",
+                      "on-error": "#690005",
+                      "on-secondary-fixed-variant": "#004c69",
+                      "primary-container": "#8083ff",
+                      "on-background": "#e4e1ed",
+                      "on-primary-fixed-variant": "#2f2ebe"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "gutter": "16px",
+                      "sm": "8px",
+                      "margin": "24px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "xl": "32px",
+                      "lg": "24px"
+              },
+              "fontFamily": {
+                      "headline-sm": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "code-md": ["JetBrains Mono"],
+                      "body-lg": ["Inter"],
+                      "label-sm": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "headline-sm": ["18px", {"lineHeight": "26px", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "code-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0F1117;
+            color: #e4e1ed;
+        }
+        .code-block {
+            background-color: #0F1117;
+            border: 1px solid #2D3149;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #13131b;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #464554;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-hidden">
+<!-- Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full w-[220px] bg-surface border-r border-outline-variant flex flex-col pt-gutter pb-margin">
+<div class="px-gutter mb-xl">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">CodePair</span>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant opacity-60">Interview Suite</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="border-l-4 border-primary bg-surface-container-high text-on-surface px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">code</span>
+<span>Problems</span>
+</a>
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">history</span>
+<span>My Sessions</span>
+</a>
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span>Leaderboard</span>
+</a>
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="px-gutter pt-gutter border-t border-outline-variant/30 mt-auto">
+<div class="flex items-center gap-3">
+<img alt="User Profile" class="w-8 h-8 rounded-full border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0BGCNEiVy_K0OtjXMYMr25ZZGJPE_Qi4hmBXQDoahtc4DhS0tNuHwyTUJZs0qMjf6c9tkltmXk4TOqots_ifX2aRxiM8oKW9_iPxfAXnbMf8TD5oWiu-NX3MVYDFNvKx8UzYTwU8rvvnOJUSafT1_7CKI0TrYPT5lrmwn9tSmMDqZS3wM1JdEGt72cyKOdHOXl1diWwB3P0T_1A2o06r6wWx3VlEY0PFCLsNthSqgztNrx1Q03MG4X-hCVvR3PjyU87U4FSDjKxg"/>
+<div class="overflow-hidden">
+<p class="text-on-surface font-semibold truncate">Alex Chen</p>
+<p class="text-[10px] text-on-surface-variant truncate">Pro Tier</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Top App Bar -->
+<header class="fixed top-0 right-0 h-[56px] bg-surface-container border-b border-outline-variant flex justify-between items-center px-margin ml-[220px] w-[calc(100%-220px)] z-40">
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm text-on-surface">42. Trapping Rain Water</h1>
+<span class="bg-tertiary/10 text-tertiary text-[10px] px-2 py-0.5 rounded border border-tertiary/20 font-bold uppercase">Hard</span>
+</div>
+<div class="flex items-center gap-gutter">
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined text-md">notifications</span>
+<span class="material-symbols-outlined text-md">help</span>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<button class="bg-primary text-on-primary px-4 py-1.5 rounded-lg font-bold text-sm hover:brightness-110 active:scale-95 transition-all">
+                Start Interview
+            </button>
+</div>
+</header>
+<!-- Main Content Grid -->
+<main class="ml-[220px] mt-[56px] h-[calc(100vh-56px)] grid grid-cols-12 overflow-hidden bg-background">
+<!-- Left Panel: Problem Details -->
+<section class="col-span-8 overflow-y-auto custom-scrollbar p-xl border-r border-outline-variant">
+<div class="max-w-3xl mx-auto">
+<!-- Hero Image Placeholder -->
+<div class="mb-xl rounded-xl overflow-hidden border border-outline-variant h-48 relative">
+<img class="w-full h-full object-cover" data-alt="A sophisticated data visualization showing blue translucent bars representing terrain heights and shaded light-blue areas indicating trapped water, following a sleek dark-mode aesthetic with neon indigo accents. The environment is clean and technical, emphasizing algorithmic precision through high-contrast grid lines and professional studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWAM1evPsYtnHZ5wjHzALS1K7_9QIQasiZ5us6o9GqNZlPDqvqE3dAazOBqd5lFRY-mcWTFsaoRA2KwOmZfceLpJLYrSVo7ImbcZazD9szzzcC5Tzk4639oV2-MNmEvU8QoZ9oZ3DmAtneRIrX1umTl6efsZBSr_DAn8egmaJiBzm-Tvhu7CMM851lsdcoE2-a6tAEJmQcg-DrWwASeWRPO-UBZT7HCGNIcUs9PYLdpBp8dXz6WwG0CxSnCs3jVFBbwn6XDIFCNR4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<div class="flex gap-4 mb-lg">
+<div class="flex items-center gap-1.5 px-3 py-1 bg-surface-container rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">schedule</span>
+<span class="text-xs text-on-surface-variant">45 mins recommended</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 bg-surface-container rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">groups</span>
+<span class="text-xs text-on-surface-variant">Top FAANG question</span>
+</div>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-md">Description</h2>
+<div class="space-y-4 text-on-surface-variant leading-relaxed">
+<p>Given <code>n</code> non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.</p>
+<p>This problem tests your ability to handle <strong>two-pointer</strong> approaches or <strong>monotonic stacks</strong>. Efficient solutions typically achieve O(n) time complexity and O(1) space complexity.</p>
+</div>
+<div class="mt-xl space-y-gutter">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Examples</h3>
+<!-- Example 1 -->
+<div class="space-y-2">
+<p class="text-label-sm font-label-sm uppercase text-primary">Example 1</p>
+<div class="code-block p-gutter rounded-lg">
+<pre class="font-code-md text-code-md"><span class="text-outline">Input:</span> height = [0,1,0,2,1,0,1,3,2,1,2,1]
+<span class="text-outline">Output:</span> 6
+<span class="text-outline">Explanation:</span> The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.</pre>
+</div>
+</div>
+<!-- Example 2 -->
+<div class="space-y-2">
+<p class="text-label-sm font-label-sm uppercase text-primary">Example 2</p>
+<div class="code-block p-gutter rounded-lg">
+<pre class="font-code-md text-code-md"><span class="text-outline">Input:</span> height = [4,2,0,3,2,5]
+<span class="text-outline">Output:</span> 9</pre>
+</div>
+</div>
+</div>
+<!-- Constraints Accordion-style -->
+<div class="mt-xl border-t border-outline-variant pt-lg">
+<button class="w-full flex justify-between items-center py-4 text-on-surface hover:text-primary transition-colors">
+<span class="font-headline-sm text-headline-sm">Constraints</span>
+<span class="material-symbols-outlined">expand_more</span>
+</button>
+<ul class="list-disc list-inside space-y-2 text-on-surface-variant font-code-md text-code-md pl-4">
+<li>n == height.length</li>
+<li>1 &lt;= n &lt;= 2 * 10<sup>4</sup></li>
+<li>0 &lt;= height[i] &lt;= 10<sup>5</sup></li>
+</ul>
+</div>
+<!-- Hints Section -->
+<div class="mt-xl space-y-md">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Hints</h3>
+<div class="bg-surface-container-low border border-outline-variant rounded-lg p-gutter">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary">lightbulb</span>
+<p class="text-body-md text-on-surface-variant">Think about what determines the amount of water trapped at a specific bar. It depends on the maximum height to its left and its right.</p>
+</div>
+</div>
+<div class="bg-surface-container-low border border-outline-variant rounded-lg p-gutter">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary">lightbulb</span>
+<p class="text-body-md text-on-surface-variant">Can you solve it in a single pass using two pointers moving towards each other?</p>
+</div>
+</div>
+</div>
+<!-- Action Buttons Footer for Main Content -->
+<div class="mt-xl flex items-center gap-4 py-gutter border-t border-outline-variant">
+<button class="bg-primary text-on-primary px-xl py-3 rounded-xl font-bold flex items-center gap-2 hover:brightness-110 transition-all shadow-[0_0_15px_rgba(99,102,241,0.3)]">
+<span class="material-symbols-outlined">rocket_launch</span>
+                        Start Interview Session
+                    </button>
+<button class="border border-outline-variant text-on-surface px-xl py-3 rounded-xl font-bold hover:bg-surface-container-low transition-all">
+                        Practice Solo
+                    </button>
+</div>
+</div>
+</section>
+<!-- Right Panel: Sidebar Stats & Related -->
+<aside class="col-span-4 overflow-y-auto custom-scrollbar bg-surface-container-low p-gutter flex flex-col gap-xl">
+<!-- Community Stats Card -->
+<div class="bg-surface border border-outline-variant rounded-xl p-gutter shadow-sm">
+<h4 class="text-label-sm font-label-sm text-on-surface-variant uppercase mb-md tracking-wider">Community Stats</h4>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="text-on-surface-variant text-xs mb-1">Acceptance Rate</p>
+<p class="text-headline-sm text-headline-sm text-on-surface">59.4%</p>
+</div>
+<div>
+<p class="text-on-surface-variant text-xs mb-1">Submissions</p>
+<p class="text-headline-sm text-headline-sm text-on-surface">2.1M</p>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant/30">
+<p class="text-on-surface-variant text-xs mb-2">Popular Languages</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-highest text-secondary text-[10px] px-2 py-0.5 rounded font-label-sm">Python 3</span>
+<span class="bg-surface-container-highest text-secondary text-[10px] px-2 py-0.5 rounded font-label-sm">C++</span>
+<span class="bg-surface-container-highest text-secondary text-[10px] px-2 py-0.5 rounded font-label-sm">Java</span>
+<span class="bg-surface-container-highest text-secondary text-[10px] px-2 py-0.5 rounded font-label-sm">Go</span>
+</div>
+</div>
+</div>
+<!-- Related Problems Sidebar -->
+<div class="space-y-gutter">
+<h4 class="text-label-sm font-label-sm text-on-surface-variant uppercase px-2 tracking-wider">Related Problems</h4>
+<div class="space-y-2">
+<a class="group block p-gutter bg-surface/50 border border-transparent hover:border-outline-variant hover:bg-surface rounded-xl transition-all" href="#">
+<div class="flex justify-between items-start mb-1">
+<span class="text-on-surface font-semibold group-hover:text-primary">11. Container With Most Water</span>
+<span class="text-[10px] text-tertiary-fixed-dim uppercase font-bold">Medium</span>
+</div>
+<p class="text-xs text-on-surface-variant line-clamp-1">Find two lines that together with the x-axis form a container...</p>
+</a>
+<a class="group block p-gutter bg-surface/50 border border-transparent hover:border-outline-variant hover:bg-surface rounded-xl transition-all" href="#">
+<div class="flex justify-between items-start mb-1">
+<span class="text-on-surface font-semibold group-hover:text-primary">84. Largest Rectangle in Histogram</span>
+<span class="text-[10px] text-error uppercase font-bold">Hard</span>
+</div>
+<p class="text-xs text-on-surface-variant line-clamp-1">Given an array of integers heights representing the histogram's bar height...</p>
+</a>
+<a class="group block p-gutter bg-surface/50 border border-transparent hover:border-outline-variant hover:bg-surface rounded-xl transition-all" href="#">
+<div class="flex justify-between items-start mb-1">
+<span class="text-on-surface font-semibold group-hover:text-primary">407. Trapping Rain Water II</span>
+<span class="text-[10px] text-error uppercase font-bold">Hard</span>
+</div>
+<p class="text-xs text-on-surface-variant line-clamp-1">Given an m x n integer matrix heightMap representing the height of each unit cell...</p>
+</a>
+</div>
+</div>
+<!-- Personal Best / Last Session (Asymmetric Layout element) -->
+<div class="mt-auto bg-primary/10 border border-primary/20 rounded-xl p-gutter">
+<div class="flex items-center gap-3 mb-3">
+<span class="material-symbols-outlined text-primary">history</span>
+<h4 class="text-on-surface font-bold">Last Attempt</h4>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase">Time Taken</p>
+<p class="text-headline-sm text-headline-sm text-primary">32:14</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] text-on-surface-variant uppercase">Success</p>
+<p class="text-headline-sm text-headline-sm text-secondary">Passed</p>
+</div>
+</div>
+</div>
+</aside>
+</main>
+</body></html>

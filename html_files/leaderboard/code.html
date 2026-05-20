@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#c0c1ff",
+                        "on-secondary-container": "#00374d",
+                        "secondary": "#7bd0ff",
+                        "on-surface-variant": "#c7c4d7",
+                        "on-tertiary": "#4f2500",
+                        "inverse-primary": "#494bd6",
+                        "on-tertiary-container": "#452000",
+                        "inverse-surface": "#e4e1ed",
+                        "surface-container": "#1f1f27",
+                        "surface-container-lowest": "#0d0d15",
+                        "on-primary-container": "#0d0096",
+                        "secondary-fixed": "#c4e7ff",
+                        "surface-dim": "#13131b",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "secondary-fixed-dim": "#7bd0ff",
+                        "surface-container-highest": "#34343d",
+                        "error": "#ffb4ab",
+                        "tertiary": "#ffb783",
+                        "surface-variant": "#34343d",
+                        "on-error-container": "#ffdad6",
+                        "primary": "#c0c1ff",
+                        "secondary-container": "#00a6e0",
+                        "on-surface": "#e4e1ed",
+                        "error-container": "#93000a",
+                        "surface-container-low": "#1b1b23",
+                        "outline": "#908fa0",
+                        "on-secondary-fixed": "#001e2c",
+                        "on-primary": "#1000a9",
+                        "inverse-on-surface": "#303038",
+                        "surface": "#13131b",
+                        "primary-fixed": "#e1e0ff",
+                        "outline-variant": "#464554",
+                        "on-primary-fixed": "#07006c",
+                        "on-secondary": "#00354a",
+                        "tertiary-fixed": "#ffdcc5",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "surface-tint": "#c0c1ff",
+                        "background": "#13131b",
+                        "surface-bright": "#393841",
+                        "tertiary-container": "#d97721",
+                        "on-tertiary-fixed": "#301400",
+                        "surface-container-high": "#292932",
+                        "on-error": "#690005",
+                        "on-secondary-fixed-variant": "#004c69",
+                        "primary-container": "#8083ff",
+                        "on-background": "#e4e1ed",
+                        "on-primary-fixed-variant": "#2f2ebe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "gutter": "16px",
+                        "sm": "8px",
+                        "margin": "24px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "code-md": ["JetBrains Mono"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["18px", {"lineHeight": "26px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "code-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0F1117; /* Base level 0 */
+            color: #e4e1ed;
+        }
+        .leaderboard-table-container {
+            scrollbar-width: thin;
+            scrollbar-color: #464554 transparent;
+        }
+        .glass-highlight {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(99, 102, 241, 0) 100%);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-hidden">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[220px] bg-surface border-r border-outline-variant flex flex-col pt-gutter pb-margin z-50">
+<div class="px-gutter mb-xl">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">CodePair</span>
+<p class="text-[10px] text-on-surface-variant tracking-[0.2em] uppercase mt-1">Interview Suite</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">code</span>
+<span>Problems</span>
+</a>
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">history</span>
+<span>My Sessions</span>
+</a>
+<a class="border-l-4 border-primary bg-surface-container-high text-on-surface px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span>Leaderboard</span>
+</a>
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="px-gutter pt-gutter mt-auto">
+<div class="flex items-center gap-3 p-2 rounded-lg bg-surface-container-low border border-outline-variant">
+<img alt="User Profile" class="w-8 h-8 rounded-full bg-surface-container-highest" data-alt="A professional close-up headshot of a software engineer in a modern workspace environment. The lighting is soft and natural, coming from large windows in the background. The user has a focused but friendly expression, wearing a minimalist dark shirt. The overall aesthetic is clean, professional, and high-tech, fitting for a developer-centric interview platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdbif4M_HR2Z1i7rBspvKdSTVAfoVLvhadKaCsRbPy5ryHtlpCoCnvsZ4MS_dlHen_rswD6mXNBildlXVzXUwZDbxesP8AtHKW1JZcDeP9kjUP-vKVeNUuCrEoOSpvJMFg5Pa2B8ANQ28zQ0eyLeJY3J51Y3bevpZAIT2D3630AS0O6k-A6vPkEoTEcF7Kh-aekin38S_Qh3T5SO-cV9-5S_dzjCb9TNmAM1EhjLhRKlG3rijYffjUyHHXJwVFgTonLQEuYlFixvk"/>
+<div class="overflow-hidden">
+<p class="text-on-surface font-semibold truncate">Alex Chen</p>
+<p class="text-on-surface-variant text-xs truncate">Pro Account</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-margin ml-[220px] w-[calc(100%-220px)] fixed top-0 h-[56px] bg-surface-container border-b border-outline-variant z-40">
+<h1 class="font-headline-md text-headline-md font-extrabold text-primary">Leaderboard</h1>
+<div class="flex items-center gap-md">
+<button class="p-2 text-on-surface-variant hover:bg-surface-bright transition-colors rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-bright transition-colors rounded-full">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="h-6 w-px bg-outline-variant mx-2"></div>
+<img alt="User Avatar" class="w-8 h-8 rounded-full border border-outline" data-alt="A detailed portrait of a diverse tech professional, showcasing a modern, clean-shaven individual with short dark hair, wearing a high-quality navy blue hoodie. The background consists of a blurred office interior with soft blue and purple neon ambient lighting, giving it a futuristic, high-end tech startup vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAxJ1yuF77Coi8dmd8OuJ7jawoFXmjgFG-KGorfj2dTcxC1a06DbEy39X6GEt0XI4nk_5mC-Em2jdz096fTBrDFzoca9LI8t4wMASYTVSYwDoo31LWAXJwWYsesy5Yt7KHf6P3oPlZK3awk-7ezvG7KsischU3a28DmHI2Ktm4vQipZflqHgMgMXvvZnydZ4Z96ufSckjLDfa5x972_H-Lle--Y4YEPlj-TDbUriBbeeifgib6NhtR844feKZbXh2gPYmpkSaIaAg"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[220px] mt-[56px] h-[calc(100vh-56px)] overflow-y-auto bg-background p-margin">
+<div class="max-w-6xl mx-auto space-y-gutter">
+<!-- Controls & Filters -->
+<div class="flex flex-col md:flex-row justify-between items-center gap-gutter">
+<!-- Tabs -->
+<div class="flex p-1 bg-surface-container-low rounded-lg border border-outline-variant">
+<button class="px-gutter py-1.5 rounded bg-surface-container-highest text-on-surface font-medium text-sm transition-all">Global</button>
+<button class="px-gutter py-1.5 rounded text-on-surface-variant hover:text-on-surface font-medium text-sm transition-all">Friends</button>
+</div>
+<!-- Time Filter -->
+<div class="flex items-center gap-2">
+<span class="text-on-surface-variant text-sm font-medium mr-2">Period:</span>
+<button class="px-4 py-1.5 border border-outline-variant rounded-full text-xs font-semibold bg-surface-container hover:bg-surface-bright text-on-surface-variant hover:text-on-surface transition-all">This Week</button>
+<button class="px-4 py-1.5 border border-outline-variant rounded-full text-xs font-semibold bg-surface-container hover:bg-surface-bright text-on-surface-variant hover:text-on-surface transition-all">This Month</button>
+<button class="px-4 py-1.5 border border-primary bg-primary-container/20 text-primary-fixed-dim rounded-full text-xs font-bold transition-all">All Time</button>
+</div>
+</div>
+<!-- Leaderboard Table Container -->
+<div class="bg-surface-container-low border border-outline-variant rounded-xl overflow-hidden shadow-xl">
+<div class="overflow-x-auto leaderboard-table-container">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high/50 border-b border-outline-variant">
+<th class="px-gutter py-md text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider w-16">Rank</th>
+<th class="px-gutter py-md text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">Developer</th>
+<th class="px-gutter py-md text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider text-center">Problems Solved</th>
+<th class="px-gutter py-md text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider text-center">Avg Runtime</th>
+<th class="px-gutter py-md text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider text-center">Sessions Won</th>
+<th class="px-gutter py-md text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider text-center">Streak</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<!-- Rank 1 - Gold -->
+<tr class="group hover:bg-surface-container-highest/30 transition-colors border-l-4 border-l-[#FFD700]">
+<td class="px-gutter py-md align-middle">
+<div class="flex items-center justify-center w-8 h-8 rounded-full bg-[#FFD700]/10 text-[#FFD700] font-bold">1</div>
+</td>
+<td class="px-gutter py-md">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img alt="Jordan" class="w-10 h-10 rounded-full border-2 border-[#FFD700]" data-alt="A close-up portrait of a highly skilled software engineer, with a modern haircut and glasses, looking intently at a high-resolution code editor on a screen just out of frame. The room is dimly lit with blue accent lighting reflecting off modern architectural surfaces. The aesthetic is extremely high-end, clean, and focused on technical excellence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcrs1LM8ntYUp75LgqL-Ln04pEiR3UrKiM_dw4cMd3uLj6RCvv6lJYJIEWF9MadYfeCCgil81PfFH5nDy3kgzfyvpLa6UAwHRj4aAnTS0XnaJutGMS6lDysMFmB19-jVmChinVi3lCpHVOl7ZTJdNHsDcGAbptZWNZmTEZdaqIKOb2Qh_iX5DJBzSxFyw8z9CycMisf2HvKe94qmbFFU3Y0i42TbZPR41TaxBzwdjJFwtXCNgIl3QRrMHwbhoGFqeloXRrQrG3ppI"/>
+<span class="absolute -bottom-1 -right-1 bg-surface-container border border-outline-variant rounded-full p-0.5 text-[10px]">👑</span>
+</div>
+<div>
+<p class="font-headline-sm text-headline-sm text-on-surface leading-none">Jordan Vance</p>
+<p class="text-on-surface-variant text-xs font-code-md">@vance_codes</p>
+</div>
+</div>
+</td>
+<td class="px-gutter py-md text-center font-code-md text-primary font-semibold">1,284</td>
+<td class="px-gutter py-md text-center font-code-md text-on-surface-variant">42ms</td>
+<td class="px-gutter py-md text-center font-code-md text-secondary">312</td>
+<td class="px-gutter py-md text-center">
+<span class="px-3 py-1 bg-tertiary-container/20 text-tertiary-fixed rounded-full text-xs font-bold flex items-center justify-center gap-1 w-fit mx-auto">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+                                        45d
+                                    </span>
+</td>
+</tr>
+<!-- Rank 2 - Silver -->
+<tr class="group hover:bg-surface-container-highest/30 transition-colors border-l-4 border-l-[#C0C0C0]">
+<td class="px-gutter py-md align-middle">
+<div class="flex items-center justify-center w-8 h-8 rounded-full bg-[#C0C0C0]/10 text-[#C0C0C0] font-bold">2</div>
+</td>
+<td class="px-gutter py-md">
+<div class="flex items-center gap-3">
+<img alt="Sarah" class="w-10 h-10 rounded-full border-2 border-[#C0C0C0]" data-alt="A portrait of a young female technologist in a high-tech lab environment. She is wearing sleek headphones and a minimalist grey sweatshirt. The background is filled with blurred data visualization monitors and sophisticated hardware components, bathed in a clean, high-contrast light-to-dark gradient of tech-centric blues and greys." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAT3uw2qfcbAFIjL7RDsX72y3_64DCVBvuvEIMiiwB0UhWSpE4-sC917Q06pm1S-mG0lgI8bP708LNE-Gew-mJcNSju9a783OKiRxbYqF-0WDxFDnLhSl-TrxXm_8V5gqO-J3IyykU1lucsviunUcwGWe3HAzO4CtXyDpPjLm9MPqpDddOswWODE_btjrRBQjh74WsfFwqK2OI3DAIqwDJlsEHQtQra2wtSMcUYLAvL6F0LxfikxdpVL1HGoU_FsOHUEmlzmAqMi2A"/>
+<div>
+<p class="font-headline-sm text-headline-sm text-on-surface leading-none">Sarah Kim</p>
+<p class="text-on-surface-variant text-xs font-code-md">@skim_stack</p>
+</div>
+</div>
+</td>
+<td class="px-gutter py-md text-center font-code-md text-primary font-semibold">1,156</td>
+<td class="px-gutter py-md text-center font-code-md text-on-surface-variant">58ms</td>
+<td class="px-gutter py-md text-center font-code-md text-secondary">289</td>
+<td class="px-gutter py-md text-center">
+<span class="px-3 py-1 bg-tertiary-container/20 text-tertiary-fixed rounded-full text-xs font-bold flex items-center justify-center gap-1 w-fit mx-auto">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+                                        12d
+                                    </span>
+</td>
+</tr>
+<!-- Rank 3 - Bronze -->
+<tr class="group hover:bg-surface-container-highest/30 transition-colors border-l-4 border-l-[#CD7F32]">
+<td class="px-gutter py-md align-middle">
+<div class="flex items-center justify-center w-8 h-8 rounded-full bg-[#CD7F32]/10 text-[#CD7F32] font-bold">3</div>
+</td>
+<td class="px-gutter py-md">
+<div class="flex items-center gap-3">
+<img alt="Marcus" class="w-10 h-10 rounded-full border-2 border-[#CD7F32]" data-alt="A cinematic portrait of a senior developer sitting in a darkened room, illuminated primarily by the glow of three large monitors showing complex code. He is focused and determined. The style is dark-themed with high contrast and sharp focus, highlighting the professional and serious nature of competitive programming." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwxV-qZ4G3SB2ZXDLC39AFNF1-i4eSFAG82zuaon3tJ_e4YkT5c2I-02cRQen0MRt7KGC8ud85qx-mDsmKYBjdGmTQUcdY8iHz45XbT5dx3EuAQw72w05qp4LCzc09qvH3ZPvwsrUcSYUNjZ50KLUM6WjMQXXKLuxeGhxwm9CoHaVan1ZN7_RPZjs2YC4XNMeyDhA77299e_n_DdZJSghIBzV_GpdWaG9YKcOOCiMUyraTg-c-HsVQ4eatkjQLAlyRo583Q2py0gg"/>
+<div>
+<p class="font-headline-sm text-headline-sm text-on-surface leading-none">Marcus Park</p>
+<p class="text-on-surface-variant text-xs font-code-md">@park_io</p>
+</div>
+</div>
+</td>
+<td class="px-gutter py-md text-center font-code-md text-primary font-semibold">1,092</td>
+<td class="px-gutter py-md text-center font-code-md text-on-surface-variant">61ms</td>
+<td class="px-gutter py-md text-center font-code-md text-secondary">245</td>
+<td class="px-gutter py-md text-center">
+<span class="px-3 py-1 bg-tertiary-container/20 text-tertiary-fixed rounded-full text-xs font-bold flex items-center justify-center gap-1 w-fit mx-auto">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+                                        8d
+                                    </span>
+</td>
+</tr>
+<!-- Rank 4 -->
+<tr class="group hover:bg-surface-container-highest/30 transition-colors border-l-4 border-transparent">
+<td class="px-gutter py-md align-middle">
+<div class="flex items-center justify-center w-8 h-8 font-bold text-on-surface-variant">4</div>
+</td>
+<td class="px-gutter py-md">
+<div class="flex items-center gap-3">
+<img alt="Elena" class="w-10 h-10 rounded-full border border-outline-variant" data-alt="A portrait of a software architect in a contemporary minimalist studio. Soft overhead light creates a high-key, modern aesthetic. The individual is looking directly at the camera with a confident, expert gaze. The color palette is dominated by sophisticated dark tones and subtle indigo accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA87pLJ6kqFmEZYyym6Exi58scl9A1Uf1T6s4jg1NFj2QY5Ty6ORc-W0i469aEeDy6hROWeUxEe9lDEMuNWxnqFvWA7PJ6rtKF22xyVJbnoEwI8RWkzhBJiUpdsDGcdelh1MvKTAGZXjJg0VBsFO33EQ2rv-OVNpPr3NkfBHuGepsdXbXSTUN2XaY6Wq77kcgV2wfzaixFKZyRYBmOZlzCd0zrS0YeUEh1hZx9YbmUdCg9KTkZTjV4MT-rGn_LjemT8R6WLmw9KLWo"/>
+<div>
+<p class="font-headline-sm text-headline-sm text-on-surface leading-none text-body-lg">Elena Lopez</p>
+<p class="text-on-surface-variant text-xs font-code-md">@elena_dev</p>
+</div>
+</div>
+</td>
+<td class="px-gutter py-md text-center font-code-md text-on-surface-variant">945</td>
+<td class="px-gutter py-md text-center font-code-md text-on-surface-variant">74ms</td>
+<td class="px-gutter py-md text-center font-code-md text-on-surface-variant">198</td>
+<td class="px-gutter py-md text-center">
+<span class="text-on-surface-variant text-xs font-code-md italic">No streak</span>
+</td>
+</tr>
+<!-- Current User - Indigo Highlighted -->
+<tr class="glass-highlight border-l-4 border-primary bg-primary-container/10">
+<td class="px-gutter py-md align-middle">
+<div class="flex items-center justify-center w-8 h-8 font-bold text-primary">12</div>
+</td>
+<td class="px-gutter py-md">
+<div class="flex items-center gap-3">
+<img alt="Alex" class="w-10 h-10 rounded-full border-2 border-primary" data-alt="A detailed portrait of a diverse tech professional, showcasing a modern, clean-shaven individual with short dark hair, wearing a high-quality navy blue hoodie. The background consists of a blurred office interior with soft blue and purple neon ambient lighting, giving it a futuristic, high-end tech startup vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJD_G2fTRJJfUCeNp_FAj3yXq0D_eOj25q5vxXI1ZFNV1u46KgT1MOndMaN5aLRnZFwhquYSI34jqjiVNo2u9_Ueamxewq-Ll98s9etqWGFr-GDqtDfC4SzT59ua_g0_6DluWHp7Msd0b_35QIwu1vgZ1h37vhI--3cbiuxZwUAq6nmH5IQ2n0IWYgVIvFJkJlsl2OAH7MqTJ3G4uLiEZETjvDK0YVen-2kBuv7YHGP_BfWI-dxflr6QHK0GZnlAP5rVIOtNCCAvo"/>
+<div>
+<div class="flex items-center gap-2">
+<p class="font-headline-sm text-headline-sm text-primary leading-none">Alex Chen</p>
+<span class="text-[10px] bg-primary text-on-primary px-1.5 py-0.5 rounded font-bold uppercase tracking-tighter">YOU</span>
+</div>
+<p class="text-on-surface-variant text-xs font-code-md">@alex_pro</p>
+</div>
+</div>
+</td>
+<td class="px-gutter py-md text-center font-code-md text-primary font-bold">752</td>
+<td class="px-gutter py-md text-center font-code-md text-on-surface-variant">88ms</td>
+<td class="px-gutter py-md text-center font-code-md text-secondary">112</td>
+<td class="px-gutter py-md text-center">
+<span class="px-3 py-1 bg-primary-container/20 text-primary-fixed-dim border border-primary/30 rounded-full text-xs font-bold flex items-center justify-center gap-1 w-fit mx-auto">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+                                        21d
+                                    </span>
+</td>
+</tr>
+<!-- Rank 13 -->
+<tr class="group hover:bg-surface-container-highest/30 transition-colors border-l-4 border-transparent">
+<td class="px-gutter py-md align-middle">
+<div class="flex items-center justify-center w-8 h-8 font-bold text-on-surface-variant">13</div>
+</td>
+<td class="px-gutter py-md">
+<div class="flex items-center gap-3">
+<img alt="David" class="w-10 h-10 rounded-full border border-outline-variant" data-alt="Portrait of a young enthusiastic developer in a workspace full of plants and minimalist tech gadgets. Natural sunlight spills over the desk, creating a warm and creative environment. The image is captured with a shallow depth of field, focusing on the friendly eyes of the developer." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFhsiauiZjZZvyItOzHaWyNS1Th1CRCL8KogAru_HiXQNEHNWEBs8EA-DXYbeFof4ITZNq3vxuLI_KFLw-vMNggRh4MFgT07xHokBmg1VawAACyD8DfrTIKox75H1BCd02-CwEzvgs8NHCEiIf9JFDI5g_7xOT9YqFnuZl-k4CqaipHx0MBLl9Uf7O7gPa9mXlKLwWrmYXzcAaolei1MnN3LlI-40UQw5jugK6sRUREFbi3S0OSjEwtgm-k_ly4IggBMw36SPiQM8"/>
+<div>
+<p class="font-headline-sm text-headline-sm text-on-surface leading-none text-body-lg">David Wu</p>
+<p class="text-on-surface-variant text-xs font-code-md">@dwu_codes</p>
+</div>
+</div>
+</td>
+<td class="px-gutter py-md text-center font-code-md text-on-surface-variant">748</td>
+<td class="px-gutter py-md text-center font-code-md text-on-surface-variant">92ms</td>
+<td class="px-gutter py-md text-center font-code-md text-on-surface-variant">109</td>
+<td class="px-gutter py-md text-center">
+<span class="px-3 py-1 bg-tertiary-container/20 text-tertiary-fixed rounded-full text-xs font-bold flex items-center justify-center gap-1 w-fit mx-auto">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+                                        4d
+                                    </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Bento Stats Summary -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mt-xl">
+<div class="bg-surface-container-low border border-outline-variant p-gutter rounded-xl">
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-1">Your Global Percentile</p>
+<div class="flex items-baseline gap-2">
+<span class="text-headline-lg font-headline-lg text-primary">Top 4%</span>
+<span class="text-green-400 text-xs flex items-center"><span class="material-symbols-outlined text-sm">arrow_upward</span> 0.5%</span>
+</div>
+</div>
+<div class="bg-surface-container-low border border-outline-variant p-gutter rounded-xl">
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-1">Next Rank Milestone</p>
+<div class="flex items-baseline gap-2">
+<span class="text-headline-lg font-headline-lg text-secondary">74 pts</span>
+<span class="text-on-surface-variant text-xs">to Rank 11</span>
+</div>
+</div>
+<div class="bg-surface-container-low border border-outline-variant p-gutter rounded-xl flex items-center justify-between">
+<div>
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-1">Active Leagues</p>
+<p class="text-headline-lg font-headline-lg text-on-surface">Diamond</p>
+</div>
+<span class="material-symbols-outlined text-4xl text-primary/40" style="font-variation-settings: 'FILL' 1;">diamond</span>
+</div>
+</div>
+</div>
+</main>
+</body></html>

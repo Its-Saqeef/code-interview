@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #0F1117; /* Base Level 0 from Style Guidance */
+            color: #e4e1ed;
+        }
+        .indigo-glow {
+            box-shadow: 0px 0px 15px rgba(99, 102, 241, 0.3);
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .glass-card {
+            background: #1A1D27; /* Level 1 Surface */
+            border: 1px solid #2D3149;
+            transition: border-color 0.2s ease;
+        }
+        .glass-card:hover {
+            border-color: #6366F1;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#c0c1ff",
+                        "on-secondary-container": "#00374d",
+                        "secondary": "#7bd0ff",
+                        "on-surface-variant": "#c7c4d7",
+                        "on-tertiary": "#4f2500",
+                        "inverse-primary": "#494bd6",
+                        "on-tertiary-container": "#452000",
+                        "inverse-surface": "#e4e1ed",
+                        "surface-container": "#1f1f27",
+                        "surface-container-lowest": "#0d0d15",
+                        "on-primary-container": "#0d0096",
+                        "secondary-fixed": "#c4e7ff",
+                        "surface-dim": "#13131b",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "secondary-fixed-dim": "#7bd0ff",
+                        "surface-container-highest": "#34343d",
+                        "error": "#ffb4ab",
+                        "tertiary": "#ffb783",
+                        "surface-variant": "#34343d",
+                        "on-error-container": "#ffdad6",
+                        "primary": "#c0c1ff",
+                        "secondary-container": "#00a6e0",
+                        "on-surface": "#e4e1ed",
+                        "error-container": "#93000a",
+                        "surface-container-low": "#1b1b23",
+                        "outline": "#908fa0",
+                        "on-secondary-fixed": "#001e2c",
+                        "on-primary": "#1000a9",
+                        "inverse-on-surface": "#303038",
+                        "surface": "#13131b",
+                        "primary-fixed": "#e1e0ff",
+                        "outline-variant": "#464554",
+                        "on-primary-fixed": "#07006c",
+                        "on-secondary": "#00354a",
+                        "tertiary-fixed": "#ffdcc5",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "surface-tint": "#c0c1ff",
+                        "background": "#13131b",
+                        "surface-bright": "#393841",
+                        "tertiary-container": "#d97721",
+                        "on-tertiary-fixed": "#301400",
+                        "surface-container-high": "#292932",
+                        "on-error": "#690005",
+                        "on-secondary-fixed-variant": "#004c69",
+                        "primary-container": "#8083ff",
+                        "on-background": "#e4e1ed",
+                        "on-primary-fixed-variant": "#2f2ebe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "gutter": "16px",
+                        "sm": "8px",
+                        "margin": "24px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "code-md": ["JetBrains Mono"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["18px", {"lineHeight": "26px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "code-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-body-md text-body-md antialiased overflow-x-hidden">
+<!-- Persistent SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[220px] bg-surface border-r border-outline-variant flex flex-col pt-gutter pb-margin z-50">
+<div class="px-margin mb-xl">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">CodePair</span>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant opacity-60">Interview Suite</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">code</span>
+<span class="font-body-md text-body-md">Problems</span>
+</a>
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-body-md text-body-md">My Sessions</span>
+</a>
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-body-md text-body-md">Leaderboard</span>
+</a>
+<a class="border-l-4 border-primary bg-surface-container-high text-on-surface px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+<div class="px-4 mt-auto">
+<div class="flex items-center gap-3 p-2 rounded-xl bg-surface-container-low border border-outline-variant">
+<img alt="User Avatar" class="w-8 h-8 rounded-full bg-surface-container-highest" data-alt="A high-quality professional headshot of a software engineer in a modern workspace, with soft teal and purple accent lighting that matches the developer-centric dark theme. The background features blurred lines of code on multiple monitors, creating a deep technical atmosphere. The lighting is crisp and cinematic, emphasizing technical expertise and professional focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNdD3ugZoFhPdi_IDVaB6HAaL0fu1lZubX2Zyr6w8q6uxICfnZZcKgTDwd4fQQep5A1-sLdqJ6xuYo-BhqHWAp-uKWONvixC51TTeKYDfL2b9q3Z4SbV_tQOPKU6xv3o10u3f5vJEmVYu8pE-OtvK2YpRM_kTBKnvqOVkCKlhp8wvPRW9vPqxZSpx5iwGjXyi0rFDScOjAliu71tIwAPeOssC9wixQq5_f5NKNSaHr4YxUpTfNyw_tTJMryKZt3jsMaIncTMtpaVY"/>
+<div class="overflow-hidden">
+<p class="text-on-surface font-semibold truncate">Alex Chen</p>
+<p class="text-xs text-on-surface-variant truncate">Free Plan</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 h-[56px] bg-surface-container border-b border-outline-variant flex justify-between items-center px-margin ml-[220px] w-[calc(100%-220px)] z-40">
+<h1 class="font-headline-md text-headline-md font-extrabold text-primary">Pricing</h1>
+<div class="flex items-center gap-gutter">
+<button class="text-on-surface-variant hover:bg-surface-bright transition-colors p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-bright transition-colors p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant">PLAN:</span>
+<span class="px-2 py-1 bg-surface-container-highest text-primary font-bold rounded text-[10px]">FREE</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[220px] pt-[56px] min-h-screen p-margin flex flex-col items-center">
+<!-- Header Section -->
+<div class="max-w-4xl w-full text-center mt-xl mb-xl">
+<span class="px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 font-label-sm text-label-sm mb-gutter inline-block">Simple, transparent pricing</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-md">Scalable coding for every team</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto font-body-lg text-body-lg">
+                From solo practice to global engineering orgs, find the plan that powers your next technical breakthrough with professional-grade interview tools.
+            </p>
+</div>
+<!-- Billing Toggle -->
+<div class="flex items-center gap-gutter mb-xl">
+<span class="text-on-surface-variant font-medium">Monthly</span>
+<button class="relative w-12 h-6 bg-surface-container-highest rounded-full border border-outline-variant flex items-center px-1">
+<div class="w-4 h-4 bg-primary rounded-full translate-x-6"></div>
+</button>
+<div class="flex items-center gap-2">
+<span class="text-on-surface font-medium">Annual</span>
+<span class="bg-tertiary-container text-on-tertiary-fixed px-2 py-0.5 rounded-full text-[10px] font-bold">SAVE 20%</span>
+</div>
+</div>
+<!-- Pricing Cards Grid -->
+<div class="pricing-grid w-full max-w-6xl mb-xl">
+<!-- Free Plan -->
+<div class="glass-card p-xl rounded-xl flex flex-col h-full relative overflow-hidden">
+<div class="mb-xl">
+<p class="text-secondary font-bold uppercase tracking-widest text-[11px] mb-2">Individual</p>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-base">Free</h3>
+<div class="flex items-baseline gap-1 mt-md">
+<span class="text-headline-lg font-bold text-on-surface">$0</span>
+<span class="text-on-surface-variant">/mo</span>
+</div>
+<p class="text-on-surface-variant mt-sm font-body-md">For developers practicing solo and learning the ropes.</p>
+</div>
+<div class="space-y-4 mb-xl flex-1">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-sm">check_circle</span>
+<span class="text-on-surface-variant">5 interview sessions / mo</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-sm">check_circle</span>
+<span class="text-on-surface-variant">Community problem set</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary text-sm">check_circle</span>
+<span class="text-on-surface-variant">Basic code editor access</span>
+</div>
+<div class="flex items-start gap-3 opacity-40">
+<span class="material-symbols-outlined text-outline-variant text-sm">block</span>
+<span class="text-on-surface-variant">No private repositories</span>
+</div>
+</div>
+<button class="w-full py-3 px-gutter border border-outline-variant text-on-surface font-bold rounded-lg hover:bg-surface-bright transition-all active:scale-95">
+                    Current Plan
+                </button>
+</div>
+<!-- Pro Plan -->
+<div class="glass-card p-xl rounded-xl flex flex-col h-full relative overflow-hidden border-primary/50">
+<div class="absolute top-4 right-4">
+<span class="bg-primary text-on-primary-fixed px-3 py-1 rounded-full text-[10px] font-bold shadow-lg">MOST POPULAR</span>
+</div>
+<div class="mb-xl">
+<p class="text-primary font-bold uppercase tracking-widest text-[11px] mb-2">Professional</p>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-base">Pro</h3>
+<div class="flex items-baseline gap-1 mt-md">
+<span class="text-headline-lg font-bold text-on-surface">$12</span>
+<span class="text-on-surface-variant">/mo</span>
+</div>
+<p class="text-on-surface-variant mt-sm font-body-md">Everything you need for serious career advancement.</p>
+</div>
+<div class="space-y-4 mb-xl flex-1">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span class="text-on-surface-variant">Unlimited interview sessions</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span class="text-on-surface-variant">AI-Powered Interview Coach</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span class="text-on-surface-variant">Private problem repositories</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span class="text-on-surface-variant">HD Video session recording</span>
+</div>
+</div>
+<button class="w-full py-3 px-gutter bg-[#6366F1] text-white font-bold rounded-lg transition-all active:scale-95 indigo-glow hover:brightness-110">
+                    Upgrade to Pro
+                </button>
+</div>
+<!-- Team Plan -->
+<div class="glass-card p-xl rounded-xl flex flex-col h-full relative overflow-hidden">
+<div class="mb-xl">
+<p class="text-tertiary font-bold uppercase tracking-widest text-[11px] mb-2">Corporate</p>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-base">Team</h3>
+<div class="flex items-baseline gap-1 mt-md">
+<span class="text-headline-lg font-bold text-on-surface">$49</span>
+<span class="text-on-surface-variant">/mo</span>
+</div>
+<p class="text-on-surface-variant mt-sm font-body-md">Advanced analytics and security for hiring teams.</p>
+</div>
+<div class="space-y-4 mb-xl flex-1">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary text-sm">check_circle</span>
+<span class="text-on-surface-variant">Single Sign-On (SSO)</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary text-sm">check_circle</span>
+<span class="text-on-surface-variant">Team performance analytics</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary text-sm">check_circle</span>
+<span class="text-on-surface-variant">Priority 24/7 technical support</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary text-sm">check_circle</span>
+<span class="text-on-surface-variant">White-label interview portal</span>
+</div>
+</div>
+<button class="w-full py-3 px-gutter border border-outline-variant text-on-surface font-bold rounded-lg hover:bg-surface-bright transition-all active:scale-95">
+                    Contact Sales
+                </button>
+</div>
+</div>
+<!-- Trust Section -->
+<div class="w-full max-w-4xl p-xl bg-surface-container-low rounded-xl border border-outline-variant text-center mb-xl">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-md">Trusted by engineers at</p>
+<div class="flex flex-wrap justify-center gap-xl grayscale opacity-50">
+<div class="flex items-center gap-2 font-bold text-on-surface">
+<span class="material-symbols-outlined">cloud</span> NEBULA
+                </div>
+<div class="flex items-center gap-2 font-bold text-on-surface">
+<span class="material-symbols-outlined">data_object</span> SYNTH
+                </div>
+<div class="flex items-center gap-2 font-bold text-on-surface">
+<span class="material-symbols-outlined">bolt</span> QUANTUM
+                </div>
+<div class="flex items-center gap-2 font-bold text-on-surface">
+<span class="material-symbols-outlined">shield</span> AEGIS
+                </div>
+</div>
+</div>
+<!-- FAQ Mini Bento Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter w-full max-w-4xl">
+<div class="p-gutter bg-surface-container rounded-lg border border-outline-variant">
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Can I switch plans later?</h4>
+<p class="text-on-surface-variant font-body-md">Yes, you can upgrade or downgrade at any time. Changes are prorated to your next billing cycle.</p>
+</div>
+<div class="p-gutter bg-surface-container rounded-lg border border-outline-variant">
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Is there a free trial?</h4>
+<p class="text-on-surface-variant font-body-md">Every new team starts with a 14-day Pro trial. No credit card required to explore our features.</p>
+</div>
+</div>
+</main>
+<!-- Footer Overlay Texture -->
+<div class="fixed bottom-0 left-0 w-full h-32 pointer-events-none bg-gradient-to-t from-background to-transparent z-10"></div>
+</body></html>

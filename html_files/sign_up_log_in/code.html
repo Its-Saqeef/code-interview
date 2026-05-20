@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #0F1117; /* Level 0 Base from Style Guidance */
+            margin: 0;
+            padding: 0;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glow-primary:hover {
+            box-shadow: 0px 0px 15px rgba(99, 102, 241, 0.3);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#c0c1ff",
+                        "on-secondary-container": "#00374d",
+                        "secondary": "#7bd0ff",
+                        "on-surface-variant": "#c7c4d7",
+                        "on-tertiary": "#4f2500",
+                        "inverse-primary": "#494bd6",
+                        "on-tertiary-container": "#452000",
+                        "inverse-surface": "#e4e1ed",
+                        "surface-container": "#1f1f27",
+                        "surface-container-lowest": "#0d0d15",
+                        "on-primary-container": "#0d0096",
+                        "secondary-fixed": "#c4e7ff",
+                        "surface-dim": "#13131b",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "secondary-fixed-dim": "#7bd0ff",
+                        "surface-container-highest": "#34343d",
+                        "error": "#ffb4ab",
+                        "tertiary": "#ffb783",
+                        "surface-variant": "#34343d",
+                        "on-error-container": "#ffdad6",
+                        "primary": "#c0c1ff",
+                        "secondary-container": "#00a6e0",
+                        "on-surface": "#e4e1ed",
+                        "error-container": "#93000a",
+                        "surface-container-low": "#1b1b23",
+                        "outline": "#908fa0",
+                        "on-secondary-fixed": "#001e2c",
+                        "on-primary": "#1000a9",
+                        "inverse-on-surface": "#303038",
+                        "surface": "#13131b",
+                        "primary-fixed": "#e1e0ff",
+                        "outline-variant": "#464554",
+                        "on-primary-fixed": "#07006c",
+                        "on-secondary": "#00354a",
+                        "tertiary-fixed": "#ffdcc5",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "surface-tint": "#c0c1ff",
+                        "background": "#13131b",
+                        "surface-bright": "#393841",
+                        "tertiary-container": "#d97721",
+                        "on-tertiary-fixed": "#301400",
+                        "surface-container-high": "#292932",
+                        "on-error": "#690005",
+                        "on-secondary-fixed-variant": "#004c69",
+                        "primary-container": "#8083ff",
+                        "on-background": "#e4e1ed",
+                        "on-primary-fixed-variant": "#2f2ebe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "gutter": "16px",
+                        "sm": "8px",
+                        "margin": "24px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "code-md": ["JetBrains Mono"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["18px", {"lineHeight": "26px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "code-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#0F1117] text-on-surface font-body-md min-h-screen flex items-center justify-center p-gutter">
+<!-- Auth Container -->
+<main class="w-full max-w-[400px]">
+<!-- Brand Identity (Reduced for Auth) -->
+<div class="flex flex-col items-center mb-xl">
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined text-primary text-[32px]" data-icon="code">code</span>
+<span class="font-headline-md text-headline-md font-extrabold text-primary tracking-tight">CodePair</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-[0.2em]">Interview Suite</p>
+</div>
+<!-- Auth Card -->
+<div class="bg-[#1A1D27] border border-outline-variant rounded-xl overflow-hidden">
+<!-- Tabs -->
+<div class="flex border-b border-outline-variant">
+<button class="flex-1 py-md font-body-md text-body-md text-primary font-bold border-b-2 border-primary bg-surface-container-high transition-all">
+                    Log In
+                </button>
+<button class="flex-1 py-md font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-all">
+                    Sign Up
+                </button>
+</div>
+<!-- Form Content -->
+<div class="p-margin flex flex-col gap-lg">
+<!-- Social Login -->
+<button class="w-full flex items-center justify-center gap-md py-sm px-md border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface hover:bg-surface-bright transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+                    Continue with GitHub
+                </button>
+<div class="relative flex items-center py-base">
+<div class="flex-grow border-t border-outline-variant/30"></div>
+<span class="flex-shrink mx-md font-label-sm text-label-sm text-outline">OR</span>
+<div class="flex-grow border-t border-outline-variant/30"></div>
+</div>
+<!-- Email/Password Form -->
+<form class="flex flex-col gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant ml-base" for="email">Email</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline text-[20px]" data-icon="mail">mail</span>
+<input class="w-full pl-[44px] pr-md py-sm bg-[#1A1D27] border border-outline-variant rounded-lg text-on-surface font-body-md focus:ring-2 focus:ring-primary-container focus:border-primary-container outline-none placeholder:text-outline/50 transition-all" id="email" placeholder="name@company.com" type="email"/>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between items-center px-base">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="password">Password</label>
+<a class="font-label-sm text-label-sm text-primary hover:underline" href="#">Forgot password?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline text-[20px]" data-icon="lock">lock</span>
+<input class="w-full pl-[44px] pr-md py-sm bg-[#1A1D27] border border-outline-variant rounded-lg text-on-surface font-body-md focus:ring-2 focus:ring-primary-container focus:border-primary-container outline-none placeholder:text-outline/50 transition-all" id="password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<button class="w-full mt-base py-sm px-md bg-primary-container text-on-primary-container font-headline-sm text-headline-sm rounded-lg glow-primary transition-all active:opacity-90 active:scale-[0.99]" type="submit">
+                        Continue
+                    </button>
+</form>
+</div>
+</div>
+<!-- Footer Info -->
+<p class="mt-margin text-center font-label-sm text-label-sm text-on-surface-variant/60 px-lg">
+            By continuing, you agree to CodePair's 
+            <a class="text-on-surface-variant underline hover:text-on-surface" href="#">Terms of Service</a> 
+            and 
+            <a class="text-on-surface-variant underline hover:text-on-surface" href="#">Privacy Policy</a>.
+        </p>
+</main>
+<!-- Background Decorative Elements (Low Contrast) -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden opacity-20">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/10 blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-secondary/10 blur-[120px]"></div>
+</div>
+</body></html>

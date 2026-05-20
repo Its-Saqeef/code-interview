@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#c0c1ff",
+                    "on-secondary-container": "#00374d",
+                    "secondary": "#7bd0ff",
+                    "on-surface-variant": "#c7c4d7",
+                    "on-tertiary": "#4f2500",
+                    "inverse-primary": "#494bd6",
+                    "on-tertiary-container": "#452000",
+                    "inverse-surface": "#e4e1ed",
+                    "surface-container": "#1f1f27",
+                    "surface-container-lowest": "#0d0d15",
+                    "on-primary-container": "#0d0096",
+                    "secondary-fixed": "#c4e7ff",
+                    "surface-dim": "#13131b",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "secondary-fixed-dim": "#7bd0ff",
+                    "surface-container-highest": "#34343d",
+                    "error": "#ffb4ab",
+                    "tertiary": "#ffb783",
+                    "surface-variant": "#34343d",
+                    "on-error-container": "#ffdad6",
+                    "primary": "#c0c1ff",
+                    "secondary-container": "#00a6e0",
+                    "on-surface": "#e4e1ed",
+                    "error-container": "#93000a",
+                    "surface-container-low": "#1b1b23",
+                    "outline": "#908fa0",
+                    "on-secondary-fixed": "#001e2c",
+                    "on-primary": "#1000a9",
+                    "inverse-on-surface": "#303038",
+                    "surface": "#13131b",
+                    "primary-fixed": "#e1e0ff",
+                    "outline-variant": "#464554",
+                    "on-primary-fixed": "#07006c",
+                    "on-secondary": "#00354a",
+                    "tertiary-fixed": "#ffdcc5",
+                    "on-tertiary-fixed-variant": "#703700",
+                    "surface-tint": "#c0c1ff",
+                    "background": "#13131b",
+                    "surface-bright": "#393841",
+                    "tertiary-container": "#d97721",
+                    "on-tertiary-fixed": "#301400",
+                    "surface-container-high": "#292932",
+                    "on-error": "#690005",
+                    "on-secondary-fixed-variant": "#004c69",
+                    "primary-container": "#8083ff",
+                    "on-background": "#e4e1ed",
+                    "on-primary-fixed-variant": "#2f2ebe"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "gutter": "16px",
+                    "sm": "8px",
+                    "margin": "24px",
+                    "xs": "4px",
+                    "md": "16px",
+                    "xl": "32px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "code-md": ["JetBrains Mono"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "headline-sm": ["18px", {"lineHeight": "26px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "code-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0F1117;
+            color: #e4e1ed;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(120px, auto);
+            gap: 16px;
+        }
+        .glass-card {
+            background: #1A1D27;
+            border: 1px solid #2D3149;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[220px] bg-surface dark:bg-surface border-r border-outline-variant flex flex-col pt-gutter pb-margin z-50">
+<div class="px-gutter mb-xl">
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary">CodePair</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Interview Suite</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="border-l-4 border-primary bg-surface-container-high text-on-surface px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined" data-icon="code">code</span>
+<span>Problems</span>
+</a>
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>My Sessions</span>
+</a>
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span>Leaderboard</span>
+</a>
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="px-gutter mt-auto pt-gutter border-t border-outline-variant flex items-center gap-3">
+<img alt="User Profile" class="w-10 h-10 rounded-full border border-outline" data-alt="A professional headshot of a software developer with a friendly expression. The lighting is crisp and cinematic with a cool blue and purple ambient background that matches a dark mode UI aesthetic. The composition is tight, showing only the head and shoulders against a softly blurred tech-focused office space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvkac5ewpphN8YT6t_8ub63r8TFtMyxBG8uy5NpHp0PtQI1SNpR6K6-wzp3MezTJBSl9jy68rAwc-_CwH0Q5cLjqDKpwE6F4GfqKKigfNcA0QBPAUiZpxzrDH6uLp_eSNqB9NoP377XWbc0epJIs8ZIiN1wEi3Z1Eee5-q5sLIWTlOeebo9Wfxw1hJZrOxVuWa6is38at5saKNRSxmg4GTo7ayAbDfdWN8PU-Eq7IfcpJCqTSYnxNi6FcKLGpr5abljGJq4Ax6iVs"/>
+<div>
+<p class="font-label-sm text-on-surface font-bold">Alex Chen</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Senior Engineer</p>
+</div>
+</div>
+</aside>
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-margin ml-[220px] w-[calc(100%-220px)] bg-surface-container dark:bg-surface-container docked full-width top-0 h-[56px] border-b border-outline-variant fixed z-40">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-md text-headline-md font-extrabold text-primary">Dashboard</h2>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-bright transition-colors p-2 rounded-lg" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-bright transition-colors p-2 rounded-lg" data-icon="help">help</button>
+<div class="h-6 w-px bg-outline-variant mx-sm"></div>
+<img alt="User Avatar" class="w-8 h-8 rounded-full border border-primary-container" data-alt="Close up profile picture of a young professional person in a dark room illuminated by the glow of computer monitors. The aesthetic is focused and technical, with hints of blue and indigo light reflecting off their features, consistent with a high-end developer environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmWFhZz0AyEamKOvNltwiJi8Y1s0rbNIfPY8CeLd2dK0mNh_m3HmZuvc2pO1it10WHVVRApNaQFgZo8G_0lmZwI84er-8MOEp9GHuJYS6Iy2CFkcXWYYTBsbvVVKaZ_P1Bfx8mUO-qhDNE1KJ0lqoQqwfn0qMjM-5XG8x_emGFnfYGu8qD6ns2uj0Dwm8UM7zoMRZa8_7Hk1p8-1Tj_sb4y-olCZS4szvBclnVTrYQdkx8MJ-xA6xIh_rom5XAyvb29XtLJD9Ef-w"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[220px] pt-[56px] min-h-screen p-margin bg-background">
+<!-- Welcome Section -->
+<div class="mb-lg flex justify-between items-end">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">Welcome back, Alex.</h3>
+<p class="text-on-surface-variant">You have 2 interviews scheduled for today.</p>
+</div>
+<div class="flex gap-sm">
+<button class="bg-surface-container-high border border-outline-variant text-on-surface px-4 py-2 rounded-lg font-label-sm flex items-center gap-2 hover:bg-surface-bright transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="history">history</span>
+                    Practice Alone
+                </button>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-sm flex items-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                    Start New Interview
+                </button>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-xl">
+<div class="glass-card p-gutter">
+<div class="flex justify-between items-start mb-sm">
+<span class="text-on-surface-variant font-label-sm uppercase">Total Sessions</span>
+<span class="material-symbols-outlined text-primary" data-icon="video_chat">video_chat</span>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface">128</div>
+<div class="text-[12px] text-secondary mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span>
+                    +12% from last month
+                </div>
+</div>
+<div class="glass-card p-gutter">
+<div class="flex justify-between items-start mb-sm">
+<span class="text-on-surface-variant font-label-sm uppercase">Problems Solved</span>
+<span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface">432</div>
+<div class="text-[12px] text-secondary mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+                    85th percentile
+                </div>
+</div>
+<div class="glass-card p-gutter">
+<div class="flex justify-between items-start mb-sm">
+<span class="text-on-surface-variant font-label-sm uppercase">Avg Runtime</span>
+<span class="material-symbols-outlined text-primary" data-icon="timer">timer</span>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface">24ms</div>
+<div class="text-[12px] text-error mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_down">trending_down</span>
+                    -2ms improvement
+                </div>
+</div>
+<div class="glass-card p-gutter">
+<div class="flex justify-between items-start mb-sm">
+<span class="text-on-surface-variant font-label-sm uppercase">Win Rate</span>
+<span class="material-symbols-outlined text-primary" data-icon="military_tech">military_tech</span>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface">78.4%</div>
+<div class="text-[12px] text-secondary mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="bolt">bolt</span>
+                    Expert Level
+                </div>
+</div>
+</div>
+<!-- Main Content Area: Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Recent Sessions Table -->
+<div class="col-span-12 lg:col-span-8 glass-card overflow-hidden">
+<div class="p-gutter border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h4 class="font-headline-sm text-headline-sm">Recent Sessions</h4>
+<button class="text-primary font-label-sm hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-lowest text-on-surface-variant font-label-sm border-b border-outline-variant">
+<th class="px-gutter py-3 font-medium">DATE</th>
+<th class="px-gutter py-3 font-medium">PROBLEM</th>
+<th class="px-gutter py-3 font-medium">ROLE</th>
+<th class="px-gutter py-3 font-medium">RESULT</th>
+<th class="px-gutter py-3 font-medium">DURATION</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="px-gutter py-4 font-code-md text-on-surface">Oct 24, 2023</td>
+<td class="px-gutter py-4">
+<div class="flex flex-col">
+<span class="text-on-surface font-medium">LRU Cache Design</span>
+<span class="text-[12px] text-on-surface-variant">Hard • System Design</span>
+</div>
+</td>
+<td class="px-gutter py-4">
+<span class="bg-secondary-container/20 text-secondary px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-tight">Candidate</span>
+</td>
+<td class="px-gutter py-4">
+<div class="flex items-center gap-2 text-primary font-medium">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                                        Accepted
+                                    </div>
+</td>
+<td class="px-gutter py-4 font-code-md text-on-surface-variant">42:15</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="px-gutter py-4 font-code-md text-on-surface">Oct 22, 2023</td>
+<td class="px-gutter py-4">
+<div class="flex flex-col">
+<span class="text-on-surface font-medium">Merge K Sorted Lists</span>
+<span class="text-[12px] text-on-surface-variant">Medium • Algorithms</span>
+</div>
+</td>
+<td class="px-gutter py-4">
+<span class="bg-tertiary-container/20 text-tertiary px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-tight">Interviewer</span>
+</td>
+<td class="px-gutter py-4">
+<div class="flex items-center gap-2 text-on-surface-variant font-medium">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+                                        Completed
+                                    </div>
+</td>
+<td class="px-gutter py-4 font-code-md text-on-surface-variant">60:00</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="px-gutter py-4 font-code-md text-on-surface">Oct 19, 2023</td>
+<td class="px-gutter py-4">
+<div class="flex flex-col">
+<span class="text-on-surface font-medium">Binary Tree Max Path</span>
+<span class="text-[12px] text-on-surface-variant">Hard • Data Structures</span>
+</div>
+</td>
+<td class="px-gutter py-4">
+<span class="bg-secondary-container/20 text-secondary px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-tight">Candidate</span>
+</td>
+<td class="px-gutter py-4">
+<div class="flex items-center gap-2 text-error font-medium">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+                                        Failed
+                                    </div>
+</td>
+<td class="px-gutter py-4 font-code-md text-on-surface-variant">38:02</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Right Column Sidebar -->
+<div class="col-span-12 lg:col-span-4 space-y-gutter">
+<!-- Upcoming Interviews -->
+<div class="glass-card p-gutter">
+<h4 class="font-headline-sm text-headline-sm mb-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="event">event</span>
+                        Upcoming
+                    </h4>
+<div class="space-y-md">
+<div class="flex gap-md border-l-2 border-primary pl-md py-1">
+<div class="flex flex-col items-center justify-center bg-surface-container-high rounded p-2 min-w-[50px]">
+<span class="font-bold text-primary">28</span>
+<span class="text-[10px] uppercase">Oct</span>
+</div>
+<div class="flex-1">
+<p class="text-on-surface font-bold">Google L5 Mock</p>
+<p class="text-[12px] text-on-surface-variant">with Sarah Jenkins • 2:00 PM</p>
+<div class="mt-2 flex gap-2">
+<button class="text-[11px] font-bold text-primary border border-primary/30 px-2 py-1 rounded hover:bg-primary/10">PREPARE</button>
+</div>
+</div>
+</div>
+<div class="flex gap-md border-l-2 border-outline-variant pl-md py-1">
+<div class="flex flex-col items-center justify-center bg-surface-container-high rounded p-2 min-w-[50px]">
+<span class="font-bold text-on-surface">31</span>
+<span class="text-[10px] uppercase">Oct</span>
+</div>
+<div class="flex-1">
+<p class="text-on-surface font-bold">Meta Technical Mock</p>
+<p class="text-[12px] text-on-surface-variant">with David Wang • 10:30 AM</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Actions / Join Room -->
+<div class="glass-card bg-primary-container/10 border-primary/20 p-gutter relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="font-headline-sm text-headline-sm mb-sm text-primary">Join Room</h4>
+<p class="text-body-md text-on-surface-variant mb-md">Enter a 6-digit code to join an active session.</p>
+<div class="flex gap-2">
+<input class="bg-surface-container border border-outline-variant rounded-lg px-3 py-2 flex-1 font-code-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="X-X-X-X-X-X" type="text"/>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-bold hover:brightness-110">JOIN</button>
+</div>
+</div>
+<div class="absolute -right-8 -bottom-8 opacity-10">
+<span class="material-symbols-outlined text-[120px]" data-icon="groups">groups</span>
+</div>
+</div>
+<!-- Leaderboard Teaser -->
+<div class="glass-card p-gutter">
+<h4 class="font-headline-sm text-headline-sm mb-md flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary" data-icon="emoji_events">emoji_events</span>
+                        Leaderboard
+                    </h4>
+<div class="space-y-sm">
+<div class="flex items-center gap-3">
+<span class="font-code-md text-on-surface-variant w-4 text-center">1</span>
+<img alt="Rank 1" class="w-6 h-6 rounded-full" data-alt="Avatar of a top ranked coder with a high-key professional look, wearing headphones, in a tech-driven workspace with colorful ambient lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBxX4Pi21MLp_gY0ytSz9LKjZx97CsIJ8AQ2_m_KNtabIkzZaBhFeV0sU-KEktZo24-EDcgEEbGvVRE0F2ziavSiV9uI8rBWD9zU8N8ryKrrLnTYAWInlDkjTq2xm--aIkJCJQUOnuq-NJX0ooEuJ82M8is-r9FUPalCKk-HB-mQir1lzas7MXZUpXHOxvcSp-W-T57gevoNjTakQHH6ZQrZNVeqC4iwAX6_BBb9wfty4_75SSp5EcCDR2rfBxFiuVuusoIS4kTMY"/>
+<span class="flex-1 font-medium truncate">binary_wizard</span>
+<span class="font-code-md text-secondary">2,840 pts</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-code-md text-on-surface-variant w-4 text-center">2</span>
+<img alt="Rank 2" class="w-6 h-6 rounded-full" data-alt="Portrait of a female engineer with a focused expression, softly lit by purple and teal neon lights, conveying a highly technical and modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwQXQUFFKgMTgHroiKEypoFAEbuiMf2PhbM0k3pEmd3S57zjkrTmX5fx58CH5a_iDhED0Y8NEXtR4iKghK8re_I3ElcnXdKwwG8wQ3AaFfw9_wc-FyogNSc9hsHLL19j2fbkGZoM5YJsO8mdZrkljcg47ZaHz-sZXDJCwzKBdz205bPyxV8kj_7QorvH6JgjQfXn7DQbtue09_jC16dYn_hLEIOfXd-W3Pb9gLAz67cdTbgVtTt1KnBAJGLSKaTxTw3nYDjeLUlcg"/>
+<span class="flex-1 font-medium truncate">logic_queen</span>
+<span class="font-code-md text-secondary">2,715 pts</span>
+</div>
+<div class="bg-surface-container-high/50 p-2 rounded flex items-center gap-3 border border-primary/20">
+<span class="font-code-md text-primary w-4 text-center">42</span>
+<img alt="You" class="w-6 h-6 rounded-full" data-alt="Small thumbnail of the user's avatar, matching the overall dark mode and professional engineer theme of the application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWNUnsKSZDEDN8pn52R1D75Yp_8rdWzl8UpIAXbLCy-smFJw3zIujaPQsmNxHk5LWbCjw0ch-sV73I8PAvyemIIZ7qXT_kmd2W_qnVCIygYBb6YdpcyNrNSbbttznfiRIc-a25dfDBR4oG-fnotwHO2poeriw08GI5pEhdaoXWz9w1wCS-FaOsl7Jdpi7TiHi802DY8QJ8TOLnBbL5cw7HE_Q07PgQ5OZsdBSrlNE8L3OJZCR3ZOk-NnONUpmtpvIdoBXL0rdaE4o"/>
+<span class="flex-1 font-bold truncate">You (Alex)</span>
+<span class="font-code-md text-primary">1,420 pts</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

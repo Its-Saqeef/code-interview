@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed-dim": "#c0c1ff",
+            "on-secondary-container": "#00374d",
+            "secondary": "#7bd0ff",
+            "on-surface-variant": "#c7c4d7",
+            "on-tertiary": "#4f2500",
+            "inverse-primary": "#494bd6",
+            "on-tertiary-container": "#452000",
+            "inverse-surface": "#e4e1ed",
+            "surface-container": "#1f1f27",
+            "surface-container-lowest": "#0d0d15",
+            "on-primary-container": "#0d0096",
+            "secondary-fixed": "#c4e7ff",
+            "surface-dim": "#13131b",
+            "tertiary-fixed-dim": "#ffb783",
+            "secondary-fixed-dim": "#7bd0ff",
+            "surface-container-highest": "#34343d",
+            "error": "#ffb4ab",
+            "tertiary": "#ffb783",
+            "surface-variant": "#34343d",
+            "on-error-container": "#ffdad6",
+            "primary": "#c0c1ff",
+            "secondary-container": "#00a6e0",
+            "on-surface": "#e4e1ed",
+            "error-container": "#93000a",
+            "surface-container-low": "#1b1b23",
+            "outline": "#908fa0",
+            "on-secondary-fixed": "#001e2c",
+            "on-primary": "#1000a9",
+            "inverse-on-surface": "#303038",
+            "surface": "#13131b",
+            "primary-fixed": "#e1e0ff",
+            "outline-variant": "#464554",
+            "on-primary-fixed": "#07006c",
+            "on-secondary": "#00354a",
+            "tertiary-fixed": "#ffdcc5",
+            "on-tertiary-fixed-variant": "#703700",
+            "surface-tint": "#c0c1ff",
+            "background": "#13131b",
+            "surface-bright": "#393841",
+            "tertiary-container": "#d97721",
+            "on-tertiary-fixed": "#301400",
+            "surface-container-high": "#292932",
+            "on-error": "#690005",
+            "on-secondary-fixed-variant": "#004c69",
+            "primary-container": "#8083ff",
+            "on-background": "#e4e1ed",
+            "on-primary-fixed-variant": "#2f2ebe"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "base": "4px",
+            "gutter": "16px",
+            "sm": "8px",
+            "margin": "24px",
+            "xs": "4px",
+            "md": "16px",
+            "xl": "32px",
+            "lg": "24px"
+          },
+          "fontFamily": {
+            "headline-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "code-md": ["JetBrains Mono"],
+            "body-lg": ["Inter"],
+            "label-sm": ["JetBrains Mono"]
+          },
+          "fontSize": {
+            "headline-sm": ["18px", {"lineHeight": "26px", "fontWeight": "600"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+            "code-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+    .modal-blur {
+      backdrop-filter: blur(8px);
+      background-color: rgba(15, 17, 23, 0.85);
+    }
+    .elevated-card {
+      background-color: #22263A;
+      border: 1px solid #2D3149;
+    }
+    .surface-card {
+      background-color: #1A1D27;
+      border: 1px solid #2D3149;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden">
+<!-- Background Content (Simulated Dashboard) -->
+<aside class="fixed left-0 top-0 h-full w-[220px] bg-surface border-r border-outline-variant flex flex-col pt-gutter pb-margin">
+<div class="px-gutter mb-xl">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">CodePair</span>
+<p class="font-body-md text-body-md text-on-surface-variant">Interview Suite</p>
+</div>
+<nav class="flex-1 space-y-base">
+<div class="border-l-4 border-primary bg-surface-container-high text-on-surface px-4 py-3 flex items-center gap-3 transition-all">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</div>
+<div class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface">
+<span class="material-symbols-outlined" data-icon="code">code</span>
+<span class="font-body-md text-body-md">Problems</span>
+</div>
+<div class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-body-md text-body-md">My Sessions</span>
+</div>
+</nav>
+</aside>
+<header class="flex justify-between items-center px-margin ml-[220px] w-[calc(100%-220px)] h-[56px] bg-surface-container border-b border-outline-variant">
+<div class="font-headline-sm text-headline-sm font-bold text-primary">Overview</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+<img alt="User Avatar" class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline-variant" data-alt="A professional close-up portrait of a software engineer in a modern, dark-themed studio. The person is lit by a subtle indigo rim light, creating a focused and technical atmosphere. The background consists of blurred code editor interfaces and soft bokeh. The overall aesthetic is minimalist, sharp, and high-fidelity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcHcCxqFi6MHI9zogNTEOA-M20QCYfuhcNeeRgX9YP-js2htCCazROBoy5NExbg4hdVcH2mOx_z8EANtm_A87jy-7UWD4J39oBwdA0cR3SByP_H3ja8avnYccoD2gv1UfaswOFH4_1Rk4msoJfUuVkYccCcezQIvMaYzFaFXkarI8nOeBPDO0-QK8yabcElAw-_PJH2YAmsBpOqPwLxtL7VY6pr_790yo9eFznbvaB03wCJT_MU_Q_mM6vSlo83PXIp2HwEUN5Ee8"/>
+</div>
+</header>
+<main class="ml-[220px] p-margin">
+<div class="grid grid-cols-12 gap-gutter">
+<div class="col-span-8 h-48 surface-card rounded-xl opacity-20"></div>
+<div class="col-span-4 h-48 surface-card rounded-xl opacity-20"></div>
+<div class="col-span-12 h-96 surface-card rounded-xl opacity-20"></div>
+</div>
+</main>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-[100] modal-blur flex items-center justify-center p-gutter">
+<div class="elevated-card w-full max-w-[840px] rounded-xl overflow-hidden shadow-2xl">
+<!-- Modal Header -->
+<div class="px-xl py-lg border-b border-outline-variant flex justify-between items-center bg-[#282C44]">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Session Setup</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Create a new interview room or join an existing one.</p>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="close">close</span>
+</button>
+</div>
+<div class="p-xl grid grid-cols-1 md:grid-cols-2 gap-xl">
+<!-- Create Room Column -->
+<div class="space-y-lg">
+<div class="flex items-center gap-md mb-md">
+<div class="w-10 h-10 rounded-lg bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="add_box">add_box</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Create Room</h3>
+</div>
+<div class="space-y-md">
+<!-- Problem Search -->
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Select Problem</label>
+<div class="relative group">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline text-[20px]" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-[#1A1D27] border border-outline-variant rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none text-body-md transition-all" placeholder="Search problems (e.g. Two Sum)" type="text"/>
+</div>
+</div>
+<!-- Time Limit -->
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Time Limit</label>
+<div class="flex gap-sm">
+<button class="flex-1 py-2 px-3 bg-surface-container-highest border border-primary text-primary rounded font-label-sm text-label-sm">45 MIN</button>
+<button class="flex-1 py-2 px-3 bg-[#1A1D27] border border-outline-variant text-on-surface-variant rounded font-label-sm text-label-sm hover:border-outline">60 MIN</button>
+<button class="flex-1 py-2 px-3 bg-[#1A1D27] border border-outline-variant text-on-surface-variant rounded font-label-sm text-label-sm hover:border-outline">90 MIN</button>
+</div>
+</div>
+<!-- Invite Link -->
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Invite Link</label>
+<div class="flex gap-xs">
+<div class="flex-1 px-3 py-2.5 bg-[#1A1D27] border border-outline-variant rounded font-code-md text-code-md text-outline truncate select-all">codepair.io/r/v2-x9k2-p0l</div>
+<button class="px-4 bg-surface-container-highest border border-outline-variant rounded flex items-center justify-center hover:bg-surface-bright transition-colors active:scale-95">
+<span class="material-symbols-outlined text-on-surface text-[18px]" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<button class="w-full mt-gutter bg-primary text-on-primary py-3 px-xl rounded font-bold font-body-lg text-body-lg shadow-[0px_0px_15px_rgba(99,102,241,0.3)] hover:brightness-110 active:scale-[0.98] transition-all">
+            Initialize Room
+          </button>
+</div>
+<!-- Vertical Divider -->
+<div class="hidden md:block absolute left-1/2 top-[120px] bottom-xl w-[1px] bg-outline-variant/30"></div>
+<!-- Join Room Column -->
+<div class="space-y-lg">
+<div class="flex items-center gap-md mb-md">
+<div class="w-10 h-10 rounded-lg bg-secondary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="group_add">group_add</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Join Room</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Enter the unique ID shared by your session host to participate in a live coding interview.
+          </p>
+<div class="space-y-xs pt-md">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Room Identifier</label>
+<input class="w-full px-4 py-3 bg-[#1A1D27] border border-outline-variant rounded focus:border-secondary focus:ring-1 focus:ring-secondary outline-none font-code-md text-code-md tracking-widest uppercase transition-all" placeholder="e.g. v2-x9k2-p0l" type="text"/>
+</div>
+<div class="bg-surface-container-low/50 p-gutter rounded-lg border border-outline-variant/50 space-y-base">
+<div class="flex items-center gap-base text-secondary">
+<span class="material-symbols-outlined text-[16px]" data-icon="info">info</span>
+<span class="font-label-sm text-label-sm">System Check</span>
+</div>
+<p class="text-[12px] text-on-surface-variant">Your microphone and camera will be requested upon entering the room. Ensure you are in a quiet environment.</p>
+</div>
+<button class="w-full mt-gutter bg-secondary text-on-secondary py-3 px-xl rounded font-bold font-body-lg text-body-lg hover:brightness-110 active:scale-[0.98] transition-all">
+            Enter Room
+          </button>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="px-xl py-md bg-surface-container-lowest flex items-center justify-center gap-xl border-t border-outline-variant">
+<div class="flex items-center gap-xs text-outline text-[12px]">
+<span class="material-symbols-outlined text-[14px]" data-icon="security">security</span>
+<span>End-to-end encrypted session</span>
+</div>
+<div class="flex items-center gap-xs text-outline text-[12px]">
+<span class="material-symbols-outlined text-[14px]" data-icon="bolt">bolt</span>
+<span>Low latency relay (&lt; 20ms)</span>
+</div>
+</div>
+</div>
+</div>
+</body></html>

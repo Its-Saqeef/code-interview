@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CodePair - Notifications</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#c0c1ff",
+                        "on-secondary-container": "#00374d",
+                        "secondary": "#7bd0ff",
+                        "on-surface-variant": "#c7c4d7",
+                        "on-tertiary": "#4f2500",
+                        "inverse-primary": "#494bd6",
+                        "on-tertiary-container": "#452000",
+                        "inverse-surface": "#e4e1ed",
+                        "surface-container": "#1f1f27",
+                        "surface-container-lowest": "#0d0d15",
+                        "on-primary-container": "#0d0096",
+                        "secondary-fixed": "#c4e7ff",
+                        "surface-dim": "#13131b",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "secondary-fixed-dim": "#7bd0ff",
+                        "surface-container-highest": "#34343d",
+                        "error": "#ffb4ab",
+                        "tertiary": "#ffb783",
+                        "surface-variant": "#34343d",
+                        "on-error-container": "#ffdad6",
+                        "primary": "#c0c1ff",
+                        "secondary-container": "#00a6e0",
+                        "on-surface": "#e4e1ed",
+                        "error-container": "#93000a",
+                        "surface-container-low": "#1b1b23",
+                        "outline": "#908fa0",
+                        "on-secondary-fixed": "#001e2c",
+                        "on-primary": "#1000a9",
+                        "inverse-on-surface": "#303038",
+                        "surface": "#13131b",
+                        "primary-fixed": "#e1e0ff",
+                        "outline-variant": "#464554",
+                        "on-primary-fixed": "#07006c",
+                        "on-secondary": "#00354a",
+                        "tertiary-fixed": "#ffdcc5",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "surface-tint": "#c0c1ff",
+                        "background": "#13131b",
+                        "surface-bright": "#393841",
+                        "tertiary-container": "#d97721",
+                        "on-tertiary-fixed": "#301400",
+                        "surface-container-high": "#292932",
+                        "on-error": "#690005",
+                        "on-secondary-fixed-variant": "#004c69",
+                        "primary-container": "#8083ff",
+                        "on-background": "#e4e1ed",
+                        "on-primary-fixed-variant": "#2f2ebe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "gutter": "16px",
+                        "sm": "8px",
+                        "margin": "24px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "code-md": ["JetBrains Mono"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["18px", {"lineHeight": "26px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "code-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0F1117;
+            color: #e4e1ed;
+        }
+        .scrim-overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(2px);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-hidden">
+<!-- Global Layout Shell -->
+<div class="relative flex h-screen w-full">
+<!-- SideNavBar - JSON Data: Dashboard is active -->
+<nav class="fixed left-0 top-0 h-full w-[220px] bg-surface dark:bg-surface border-r border-outline-variant flex flex-col pt-gutter pb-margin">
+<div class="px-gutter mb-margin">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">CodePair</span>
+<p class="text-[11px] text-on-surface-variant leading-tight">Interview Suite</p>
+</div>
+<div class="flex flex-col flex-1">
+<!-- Dashboard (Active) -->
+<a class="border-l-4 border-primary bg-surface-container-high text-on-surface px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Problems -->
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined" data-icon="code">code</span>
+<span>Problems</span>
+</a>
+<!-- My Sessions -->
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>My Sessions</span>
+</a>
+<!-- Leaderboard -->
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span>Leaderboard</span>
+</a>
+<div class="mt-auto">
+<!-- Settings -->
+<a class="border-l-4 border-transparent text-on-surface-variant px-4 py-3 flex items-center gap-3 transition-all hover:bg-surface-container-low hover:text-on-surface" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas (Blurred Background Content) -->
+<main class="ml-[220px] flex-1 flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-margin h-[56px] bg-surface-container dark:bg-surface-container border-b border-outline-variant">
+<span class="font-headline-md text-headline-md font-extrabold text-primary">CodePair</span>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-surface-bright transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-bright transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="A high-quality professional studio headshot of a developer in a dark navy hoodie, looking forward with a slight smile. The background is a clean, neutral dark gray, fitting the tech-centric and minimalist aesthetic of a modern coding platform. The lighting is soft and directional, highlighting facial features clearly while maintaining a professional and reliable tone." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACjU6cmRTwWeFldf6Xdw5M0yye6JUmOQ7rkMtWQgEadl4i6tPj_Eru09EHotjRhi4dQnPJgpw-syI7br82n4P7Z5KnH9udlV_lW8lMncJSmDMdBOyv0hhoipSxZ_MstS7GTmV5VDbZ_KVnnALVhfq7Ljqa2cL1iKS8JWWQUdqgLuOw_ckZf5GFc08jheMov05WOc1K_IYbR2DLmh3QUjkE8Bo3AbXwWZGTzX5EQuhURWA93h4bxZB5caPyG7QqzBX53BZp0d5k2qw"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Content Placeholder -->
+<div class="p-margin space-y-6">
+<div class="flex justify-between items-end">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Welcome back, Alex</h1>
+<p class="text-on-surface-variant">Here is what happened with your candidates today.</p>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bg-surface-container border border-outline-variant rounded-lg p-lg">
+<p class="text-label-sm font-label-sm text-on-surface-variant mb-base">ACTIVE SESSIONS</p>
+<p class="font-headline-md text-headline-md text-primary">12</p>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded-lg p-lg">
+<p class="text-label-sm font-label-sm text-on-surface-variant mb-base">PENDING INVITES</p>
+<p class="font-headline-md text-headline-md text-secondary">4</p>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded-lg p-lg">
+<p class="text-label-sm font-label-sm text-on-surface-variant mb-base">COMPLETED TODAY</p>
+<p class="font-headline-md text-headline-md text-tertiary">8</p>
+</div>
+</div>
+<!-- Recent Activity Bento -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="md:col-span-2 bg-surface-container border border-outline-variant rounded-lg p-lg h-64 overflow-hidden relative">
+<div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary via-transparent to-transparent"></div>
+<h3 class="font-headline-sm text-headline-sm mb-md relative z-10">System Performance</h3>
+<div class="flex items-end gap-2 h-32 mt-lg relative z-10">
+<div class="flex-1 bg-primary h-[40%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary h-[60%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary h-[55%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary h-[85%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary h-[70%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary h-[95%] rounded-t-sm"></div>
+<div class="flex-1 bg-primary h-[80%] rounded-t-sm"></div>
+</div>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded-lg p-lg">
+<h3 class="font-headline-sm text-headline-sm mb-md">Active Interviews</h3>
+<div class="space-y-sm">
+<div class="flex items-center gap-sm p-sm bg-surface-container-low rounded border border-outline-variant">
+<div class="w-2 h-2 rounded-full bg-green-400"></div>
+<span class="text-body-md font-body-md text-on-surface">Backend Engineer</span>
+</div>
+<div class="flex items-center gap-sm p-sm bg-surface-container-low rounded border border-outline-variant">
+<div class="w-2 h-2 rounded-full bg-green-400"></div>
+<span class="text-body-md font-body-md text-on-surface">UX Designer</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Notification Panel Overlay -->
+<div class="fixed inset-0 z-50 flex justify-end">
+<!-- Scrim -->
+<div class="scrim-overlay absolute inset-0"></div>
+<!-- Slide-in Panel -->
+<aside class="relative w-full max-w-[400px] bg-surface-container-low h-full flex flex-col shadow-2xl border-l border-outline-variant">
+<!-- Header -->
+<div class="px-margin pt-margin pb-gutter flex flex-col gap-gutter">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md text-on-surface">Notifications</h2>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<div class="flex items-center justify-between">
+<!-- Tabs -->
+<div class="flex items-center gap-gutter border-b border-outline-variant">
+<button class="pb-base border-b-2 border-primary text-on-surface font-bold">All</button>
+<button class="pb-base border-b-2 border-transparent text-on-surface-variant hover:text-on-surface transition-colors">Unread</button>
+</div>
+<button class="text-label-sm font-label-sm text-primary hover:underline transition-all">
+                            Mark all read
+                        </button>
+</div>
+</div>
+<!-- Notifications List -->
+<div class="flex-1 overflow-y-auto px-gutter py-base space-y-base">
+<!-- Notification Item 1 (Unread) -->
+<div class="group flex items-start gap-md p-md bg-surface-container-high rounded-lg border border-outline-variant hover:bg-surface-bright transition-all cursor-pointer relative">
+<div class="absolute right-4 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(192,193,255,0.6)]"></div>
+<div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-outline-variant">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="A focused close-up of a diverse male hiring manager with sharp features and glasses, professional lighting highlighting his profile. The image style is crisp, clean, and modern with a cool-toned, desaturated background to emphasize the interface's technical and professional nature." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCK-j1FCgt-lF12W99ZkIaeUL1cvSs7ZM_lMMGQdi-ubhxR6e5QB4m34SOoI-aLsgJ1GQKx65TaDx9_TobxnSBWAQE2ouYcta_UpotD7DqqqLX2pUfWmwUf0djTPfOhxeTpqJ6ZxiyWtew-0WPxF66QDcdPNL6Trmy3N0OUXCE51y4CaXQuW0R6wZZqQoWbt1u1CsaPtsePohM6eVl52Pym6qWceFMsIny0Ku2ZF4a-yFdw-uKupqty9noPe_S11kiuUHdP_-ZVE08"/>
+</div>
+<div class="flex-1 pr-6">
+<div class="flex justify-between items-start">
+<span class="font-body-md text-on-surface font-bold">Interview invite</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">2m ago</span>
+</div>
+<p class="text-body-md text-on-surface-variant mt-xs">Jordan Smith has invited you to a technical session for the Senior Frontend role.</p>
+</div>
+</div>
+<!-- Notification Item 2 (Unread) -->
+<div class="group flex items-start gap-md p-md bg-surface-container-high rounded-lg border border-outline-variant hover:bg-surface-bright transition-all cursor-pointer relative">
+<div class="absolute right-4 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(192,193,255,0.6)]"></div>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0 border border-outline-variant text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="assignment_turned_in">assignment_turned_in</span>
+</div>
+<div class="flex-1 pr-6">
+<div class="flex justify-between items-start">
+<span class="font-body-md text-on-surface font-bold">Result ready</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">45m ago</span>
+</div>
+<p class="text-body-md text-on-surface-variant mt-xs">Final evaluation for Sarah Connor (Fullstack Engineer) is now available for review.</p>
+</div>
+</div>
+<!-- Notification Item 3 (Read) -->
+<div class="group flex items-start gap-md p-md bg-surface-container-low rounded-lg border border-transparent hover:border-outline-variant transition-all cursor-pointer">
+<div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-outline-variant opacity-70">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="A portrait of a confident female lead engineer in a minimalist office setting with soft, ambient lighting. The visual style is premium and corporate-modern, utilizing a monochromatic blue and gray palette with subtle pops of professional light. The mood is calm and focused, reflecting a high-performance developer culture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc9UIpsCqfWZWhav_uwmMW8VJwEkp37XF0sQw4m1at9KCuasp7K9Y7Nfzw4f1hGi3pOit6OiCvijzRGJgRD45n36qDeiUoq8XuYiDxq7jxFtbjz15t2i5Sr5oCcQt1-ENnOd81JY97jb95wiHI7FQjRDYq2unKET88g4fzGs3Ox96jToOi_YF4PkJa1b6cgJZnto3MPGE_VnH0AEYq_-0cJdA2kFXNOWkY-fqhonOU4CZD_R4GNftPeRuTPXSKAqelTxZ1Ph4pyqw"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<span class="font-body-md text-on-surface-variant">Interview invite</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">2h ago</span>
+</div>
+<p class="text-body-md text-outline-variant mt-xs">Emily Chen requested to reschedule the session for Wednesday at 10:00 AM.</p>
+</div>
+</div>
+<!-- Notification Item 4 (Read) -->
+<div class="group flex items-start gap-md p-md bg-surface-container-low rounded-lg border border-transparent hover:border-outline-variant transition-all cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center flex-shrink-0 border border-outline-variant text-outline-variant">
+<span class="material-symbols-outlined" data-icon="verified">verified</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<span class="font-body-md text-on-surface-variant">System update</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">5h ago</span>
+</div>
+<p class="text-body-md text-outline-variant mt-xs">CodePair IDE has been updated to v2.4.1. Check out the new pair-programming features.</p>
+</div>
+</div>
+<!-- Notification Item 5 (Read) -->
+<div class="group flex items-start gap-md p-md bg-surface-container-low rounded-lg border border-transparent hover:border-outline-variant transition-all cursor-pointer">
+<div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-outline-variant opacity-70">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="A clean, minimalist headshot of a technical recruiter with a warm but professional expression, set against a blurred background of a modern workspace with soft white lighting. The lighting is bright and airy, maintaining the high-stakes professional aesthetic of the platform. The composition is centered and balanced." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6NlhRQ-mDAv4VsjDM04xa-jysIHE5vbfRxm1rCVpbXJI6OshgjWiNOqbV-Pm-MxtAy6jofGklO9VEijeeavrHHgL7w-hbBK0TC9J7IBSqP_mb6jG9Ip3YkwGFBm7sXYgNEpyvjGTyQGkQq2oUrEyLmX6KNeiIgRg8qGLRuj-2stz9GiLljFBGiE6xVhMLR0U-MmqBUJzdVOEm-OhBLp2_vch1wMjl4acTZPXA3NN7fl4xEYp3zCR1dE9lZdwBPuugKZ3cYidhWLQ"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<span class="font-body-md text-on-surface-variant">Result ready</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Yesterday</span>
+</div>
+<p class="text-body-md text-outline-variant mt-xs">Python Algorithm test results for Marcus Aurelius are ready for download.</p>
+</div>
+</div>
+</div>
+<!-- Footer Action -->
+<div class="p-margin border-t border-outline-variant bg-surface-container-low">
+<button class="w-full bg-primary text-on-primary py-md rounded font-bold hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings_suggest">settings_suggest</span>
+                        Manage Notification Settings
+                    </button>
+</div>
+</aside>
+</div>
+</div>
+</body></html>

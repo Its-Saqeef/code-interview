@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#c0c1ff",
+                    "on-secondary-container": "#00374d",
+                    "secondary": "#7bd0ff",
+                    "on-surface-variant": "#c7c4d7",
+                    "on-tertiary": "#4f2500",
+                    "inverse-primary": "#494bd6",
+                    "on-tertiary-container": "#452000",
+                    "inverse-surface": "#e4e1ed",
+                    "surface-container": "#1f1f27",
+                    "surface-container-lowest": "#0d0d15",
+                    "on-primary-container": "#0d0096",
+                    "secondary-fixed": "#c4e7ff",
+                    "surface-dim": "#13131b",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "secondary-fixed-dim": "#7bd0ff",
+                    "surface-container-highest": "#34343d",
+                    "error": "#ffb4ab",
+                    "tertiary": "#ffb783",
+                    "surface-variant": "#34343d",
+                    "on-error-container": "#ffdad6",
+                    "primary": "#c0c1ff",
+                    "secondary-container": "#00a6e0",
+                    "on-surface": "#e4e1ed",
+                    "error-container": "#93000a",
+                    "surface-container-low": "#1b1b23",
+                    "outline": "#908fa0",
+                    "on-secondary-fixed": "#001e2c",
+                    "on-primary": "#1000a9",
+                    "inverse-on-surface": "#303038",
+                    "surface": "#13131b",
+                    "primary-fixed": "#e1e0ff",
+                    "outline-variant": "#464554",
+                    "on-primary-fixed": "#07006c",
+                    "on-secondary": "#00354a",
+                    "tertiary-fixed": "#ffdcc5",
+                    "on-tertiary-fixed-variant": "#703700",
+                    "surface-tint": "#c0c1ff",
+                    "background": "#13131b",
+                    "surface-bright": "#393841",
+                    "tertiary-container": "#d97721",
+                    "on-tertiary-fixed": "#301400",
+                    "surface-container-high": "#292932",
+                    "on-error": "#690005",
+                    "on-secondary-fixed-variant": "#004c69",
+                    "primary-container": "#8083ff",
+                    "on-background": "#e4e1ed",
+                    "on-primary-fixed-variant": "#2f2ebe"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "gutter": "16px",
+                    "sm": "8px",
+                    "margin": "24px",
+                    "xs": "4px",
+                    "md": "16px",
+                    "xl": "32px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "code-md": ["JetBrains Mono"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "headline-sm": ["18px", {"lineHeight": "26px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "code-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0F1117;
+            color: #e4e1ed;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 50% -20%, rgba(99, 102, 241, 0.15) 0%, rgba(15, 17, 23, 0) 70%);
+        }
+        .primary-glow:hover {
+            box-shadow: 0px 0px 15px rgba(99, 102, 241, 0.3);
+        }
+        .card-border {
+            border: 1px solid #2D3149;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md">
+<!-- Top Navigation -->
+<header class="fixed top-0 left-0 right-0 h-[56px] bg-surface-container/80 backdrop-blur-md z-50 border-b border-outline-variant/30 px-margin flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md font-extrabold text-primary">CodePair</span>
+</div>
+<div class="flex items-center gap-gutter">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors" href="#">Sign In</a>
+<button class="bg-primary text-on-primary font-headline-sm text-headline-sm px-gutter py-1.5 rounded-lg primary-glow transition-all active:scale-95">
+                Get Started
+            </button>
+</div>
+</header>
+<main class="pt-[56px]">
+<!-- Hero Section -->
+<section class="relative min-h-[870px] flex flex-col items-center justify-center text-center px-margin hero-gradient">
+<div class="max-w-4xl mx-auto space-y-gutter">
+<div class="inline-flex items-center gap-2 bg-surface-container-high border border-outline-variant px-3 py-1 rounded-full mb-base">
+<span class="material-symbols-outlined text-[16px] text-primary">auto_awesome</span>
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-primary">Now with AI code analysis</span>
+</div>
+<h1 class="font-headline-lg text-[64px] leading-[1.1] font-extrabold tracking-tight text-on-surface">
+                    Interview smarter, <span class="text-primary">together</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                    Real-time collaborative coding interviews with live execution. The technical hiring platform built for speed, accuracy, and deep focus.
+                </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-gutter pt-md">
+<button class="w-full sm:w-auto bg-primary text-on-primary font-headline-sm text-headline-sm px-xl py-lg rounded-lg primary-glow transition-all active:scale-95 flex items-center justify-center gap-2">
+                        Start Interview
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="w-full sm:w-auto bg-transparent text-on-surface font-headline-sm text-headline-sm px-xl py-lg rounded-lg border border-outline-variant hover:bg-surface-container transition-all active:scale-95">
+                        Practice Solo
+                    </button>
+</div>
+</div>
+<!-- Dashboard Preview -->
+<div class="mt-xl w-full max-w-5xl mx-auto rounded-xl border border-outline-variant bg-surface-container-lowest overflow-hidden shadow-2xl relative">
+<div class="h-8 bg-surface-container border-b border-outline-variant flex items-center px-md gap-1.5">
+<div class="w-2.5 h-2.5 rounded-full bg-error/40"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-tertiary/40"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-secondary/40"></div>
+</div>
+<img alt="IDE Interface Preview" class="w-full h-auto grayscale-[0.5] opacity-80" data-alt="A high-resolution screenshot of a professional dark-themed integrated development environment. The interface displays complex lines of Python code with vibrant syntax highlighting in indigo, teal, and amber. Beside the editor, a real-time collaborative chat and a video call window show two software engineers engaged in a technical interview. The overall aesthetic is sleek, minimalist, and developer-centric, mirroring a high-stakes technical workspace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-astJFzqJmLz2fKldIkLZGiK0HtIlBWNBBwQWopyRhwtQWqotFE3F55mvmWzrrLRua6gVjxYaL_ALY3U-X4t0rm3-70QxZc8RMePi-KtOdvWk-P-Ii9LH_7GlgKZ0vtZHS4dccsmj-04FU91dQwwlUK0xoi8Xnu5YacdElwuqaXeI-j_3yAcZkXAYxpWRQy8Y8A9hrRGYGsZmBy-aipFxexoC7vFYgsaGCzCFTdHVQbQyd6wb2yd8rDDeEkxxK9kyJkQClcVmlD4"/>
+</div>
+</section>
+<!-- Feature Bento Grid -->
+<section class="py-xl px-margin max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-surface-container-low card-border rounded-xl p-xl flex flex-col gap-md hover:bg-surface-container-high transition-colors group">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary">groups</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Real-time Collaboration</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Latency-free shared editor with multi-cursor support. Type together, debug together, and evaluate faster with no sync issues.
+                    </p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-low card-border rounded-xl p-xl flex flex-col gap-md hover:bg-surface-container-high transition-colors group">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
+<span class="material-symbols-outlined text-secondary">terminal</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Multi-language Execution</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Execute code in 20+ languages instantly. Built-in isolated sandboxes ensure secure and consistent runtimes for every session.
+                    </p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-low card-border rounded-xl p-xl flex flex-col gap-md hover:bg-surface-container-high transition-colors group">
+<div class="w-12 h-12 rounded-lg bg-tertiary/10 flex items-center justify-center group-hover:bg-tertiary/20 transition-colors">
+<span class="material-symbols-outlined text-tertiary">replay</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Session Replay</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Review every keystroke after the interview. Replay the entire thought process of the candidate with our deterministic playback system.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Stats/Social Proof -->
+<section class="py-xl border-y border-outline-variant/20 bg-surface-container-lowest/50">
+<div class="max-w-7xl mx-auto px-margin flex flex-wrap justify-around gap-xl opacity-50 grayscale">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md font-bold">GITHUB</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md font-bold">VERCEL</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md font-bold">LINEAR</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md font-bold">STRIPE</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low border-t border-outline-variant py-xl mt-xl">
+<div class="max-w-7xl mx-auto px-margin grid grid-cols-2 md:grid-cols-4 gap-xl">
+<div class="col-span-2 md:col-span-1 space-y-md">
+<span class="font-headline-md text-headline-md font-extrabold text-primary">CodePair</span>
+<p class="text-on-surface-variant text-body-md max-w-[200px]">
+                    Empowering technical teams to find the best talent through better interviews.
+                </p>
+</div>
+<div class="space-y-sm">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Product</h4>
+<ul class="space-y-xs text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Features</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Pricing</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Security</a></li>
+</ul>
+</div>
+<div class="space-y-sm">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Company</h4>
+<ul class="space-y-xs text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Blog</a></li>
+</ul>
+</div>
+<div class="space-y-sm">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Legal</h4>
+<ul class="space-y-xs text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Privacy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Terms</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Cookie Policy</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-margin mt-xl pt-lg border-t border-outline-variant/30 flex justify-between items-center text-on-surface-variant text-label-sm">
+<span>© 2024 CodePair Inc. All rights reserved.</span>
+<div class="flex gap-md">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">language</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary">help</span>
+</div>
+</div>
+</footer>
+</body></html>
