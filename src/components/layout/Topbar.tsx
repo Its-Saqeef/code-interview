@@ -77,9 +77,13 @@ export const Topbar = () => {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button className="flex items-center gap-2 p-1.5 rounded-[6px] hover:bg-[#22263A] transition-colors focus:outline-none">
-                <div className="h-7 w-7 rounded-full bg-[#6366F1] text-white flex items-center justify-center font-mono font-bold text-xs">
-                  {user.name.substring(0, 1).toUpperCase()}
-                </div>
+                {user.avatarUrl ? (
+                  <img src={user.avatarUrl} alt={user.name} className="h-7 w-7 rounded-full object-cover border border-[#2D3149]" />
+                ) : (
+                  <div className="h-7 w-7 rounded-full bg-[#6366F1] text-white flex items-center justify-center font-mono font-bold text-xs">
+                    {user.name.substring(0, 1).toUpperCase()}
+                  </div>
+                )}
                 <span className="text-sm font-medium text-[#e4e1ed] hidden md:block">{user.name}</span>
               </button>
             </DropdownMenuTrigger>

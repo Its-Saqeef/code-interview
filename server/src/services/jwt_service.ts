@@ -8,8 +8,8 @@ export async function generateToken(payload: any, res: express.Response) {
         });
         res.cookie("token", token, {
             httpOnly: true,
-            secure: true,
-            sameSite: "strict",
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "lax",
             maxAge: 1000 * 60 * 60,
         });
         return token;
@@ -19,16 +19,30 @@ export async function generateToken(payload: any, res: express.Response) {
     }
 }
 
-export async function verifyToken(req: express.Request, res: express.Response) {
+export async function verifyToken(req: express.Request) {
     try {
-        const token = req.cookies?.token;
+        // Retrieve token from parsed cookies or fallback to manual header parsing
+        let token = req.cookies?.token;
+        
+        if (!token && req.headers.cookie) {
+            const rawCookies = req.headers.cookie;
+            const cookies = rawCookies.split(";").reduce((acc: Record<string, string>, cookie) => {
+                const [key, val] = cookie.trim().split("=");
+                if (key && val) {
+                    acc[key] = decodeURIComponent(val);
+                }
+                return acc;
+            }, {});
+            token = cookies.token;
+        }
+
         if (!token) {
-            return res.status(401).json({ success: false, message: 'No token provided' });
+            return null;
         }
         const decoded = jwt.verify(token, process.env.JWT_SECRET!);
         return decoded;
     } catch (error) {
         console.error("Error verifying token:", error);
-        throw error;
+        return null;
     }
 }

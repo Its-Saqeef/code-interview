@@ -1,60 +1,110 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { loginApi, registerApi, logoutApi, getMeApi } from '../api/auth.api';
 
 export interface User {
   id: string;
   name: string;
   email: string;
   role: 'user' | 'admin';
+  avatarUrl?: string;
 }
 
 interface AuthContextType {
   user: User | null;
   isAuthenticated: boolean;
   isLoading: boolean;
-  login: (email: string, role?: 'user' | 'admin') => Promise<void>;
-  logout: () => void;
+  login: (email: string, password: string) => Promise<void>;
+  register: (name: string, username: string, email: string, password: string, avatarUrl: string) => Promise<void>;
+  logout: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(() => {
-    const saved = localStorage.getItem('mock_user');
+    const saved = localStorage.getItem('auth_user');
     return saved ? JSON.parse(saved) : null;
   });
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate auth token check on mount
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 600);
-    return () => clearTimeout(timer);
+    const checkAuth = async () => {
+      try {
+        const data = await getMeApi();
+        if (data.success && data.user) {
+          setUser(data.user);
+          localStorage.setItem('auth_user', JSON.stringify(data.user));
+        } else {
+          setUser(null);
+          localStorage.removeItem('auth_user');
+        }
+      } catch (error: any) {
+        // Only clear the session if it is an explicit authentication error (401/403)
+        // This prevents logging the user out on transient network errors or temporary server down-time
+        const isAuthError = error.response && (error.response.status === 401 || error.response.status === 403);
+        if (isAuthError) {
+          setUser(null);
+          localStorage.removeItem('auth_user');
+        } else {
+          console.warn("Authentication check failed due to network or server error, retaining cached session:", error);
+        }
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    checkAuth();
   }, []);
 
-  const login = async (email: string, role: 'user' | 'admin' = 'user') => {
+  const login = async (email: string, password: string) => {
     setIsLoading(true);
-    // Simulate api request
-    await new Promise((resolve) => setTimeout(resolve, 800));
-    
-    const mockUser: User = {
-      id: Math.random().toString(36).substring(2, 9),
-      name: email.split('@')[0],
-      email: email,
-      role: role,
-    };
-    setUser(mockUser);
-    localStorage.setItem('mock_user', JSON.stringify(mockUser));
-    setIsLoading(false);
+    try {
+      const data = await loginApi(email, password);
+      if (data.success && data.user) {
+        setUser(data.user);
+        localStorage.setItem('auth_user', JSON.stringify(data.user));
+      }
+    } catch (error) {
+      setUser(null);
+      localStorage.removeItem('auth_user');
+      throw error;
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem('mock_user');
+  const register = async (name: string, username: string, email: string, password: string, avatarUrl: string) => {
+    setIsLoading(true);
+    try {
+      const data = await registerApi(name, username, email, password, avatarUrl);
+      if (data.success && data.user) {
+        setUser(data.user);
+        localStorage.setItem('auth_user', JSON.stringify(data.user));
+      }
+    } catch (error) {
+      setUser(null);
+      localStorage.removeItem('auth_user');
+      throw error;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const logout = async () => {
+    setIsLoading(true);
+    try {
+      await logoutApi();
+    } catch (error) {
+      console.error('Logout API failed:', error);
+    } finally {
+      setUser(null);
+      localStorage.removeItem('auth_user');
+      setIsLoading(false);
+    }
   };
 
   return (
-    <AuthContext value={{ user, isAuthenticated: !!user, isLoading, login, logout }}>
+    <AuthContext value={{ user, isAuthenticated: !!user, isLoading, login, register, logout }}>
       {children}
     </AuthContext>
   );

@@ -88,9 +88,13 @@ export const Sidebar = () => {
       {user && (
         <div className="p-4 border-t border-[#2D3149] bg-[#1F2231] flex flex-col gap-3">
           <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-full bg-[#6366F1]/15 text-[#6366F1] flex items-center justify-center font-mono font-semibold text-sm border border-[#6366F1]/20">
-              {user.name.substring(0, 2).toUpperCase()}
-            </div>
+            {user.avatarUrl ? (
+              <img src={user.avatarUrl} alt={user.name} className="h-9 w-9 rounded-full object-cover border border-[#2D3149]" />
+            ) : (
+              <div className="h-9 w-9 rounded-full bg-[#6366F1]/15 text-[#6366F1] flex items-center justify-center font-mono font-semibold text-sm border border-[#6366F1]/20">
+                {user.name.substring(0, 2).toUpperCase()}
+              </div>
+            )}
             <div className="flex flex-col min-w-0">
               <span className="text-sm font-medium text-white truncate">{user.name}</span>
               <span className="text-[10px] text-[#908fa0] font-mono capitalize truncate">{user.role}</span>

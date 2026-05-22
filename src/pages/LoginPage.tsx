@@ -5,40 +5,73 @@ import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
 import { Input } from '../components/ui/Input';
 import { Label } from '../components/ui/Label';
-import { Code2, Mail, Lock, Info } from 'lucide-react';
+import { Code2, Mail, Lock, Info, User as UserIcon, Loader2 } from 'lucide-react';
 import clsx from 'clsx';
+import { toastService } from '../services/toast.service';
 
 export const LoginPage = ({ initialTab = 'login' }: { initialTab?: 'login' | 'signup' }) => {
   const [activeTab, setActiveTab] = useState<'login' | 'signup'>(initialTab);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [usernameVal, setUsernameVal] = useState('');
+  const [avatarUrl, setAvatarUrl] = useState('');
+
   const [loadingUser, setLoadingUser] = useState(false);
   const [loadingAdmin, setLoadingAdmin] = useState(false);
 
-  const { login } = useAuth();
+  const { login, register } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
   const redirectPath = location.state?.from?.pathname || '/';
 
-  const handleMockLogin = async (role: 'user' | 'admin') => {
-    if (role === 'user') setLoadingUser(true);
-    if (role === 'admin') setLoadingAdmin(true);
-    
+  const handleAvatar = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setAvatarUrl(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  const handleAdminLogin = async () => {
+    setLoadingAdmin(true);
     try {
-      await login(email || `${role}@compile.io`, role);
-      navigate(redirectPath, { replace: true });
-    } catch (err) {
+      await login('admin@compile.io', 'admin123456');
+      toastService.success('Admin session authorized successfully!');
+      navigate('/admin', { replace: true });
+    } catch (err: any) {
       console.error(err);
+      const errMsg = err?.response?.data?.message || err?.message || 'Admin login failed';
+      toastService.error(errMsg);
     } finally {
-      if (role === 'user') setLoadingUser(false);
-      if (role === 'admin') setLoadingAdmin(false);
+      setLoadingAdmin(false);
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    handleMockLogin('user');
+    setLoadingUser(true);
+    try {
+      if (activeTab === 'login') {
+        await login(email, password);
+        toastService.success('Logged in successfully!');
+        navigate(redirectPath, { replace: true });
+      } else {
+        await register(name, usernameVal, email, password, avatarUrl);
+        toastService.success('Account created successfully!');
+        navigate(redirectPath, { replace: true });
+      }
+    } catch (err: any) {
+      console.error(err);
+      const errMsg = err?.response?.data?.message || err?.message || 'Authentication failed';
+      toastService.error(errMsg);
+    } finally {
+      setLoadingUser(false);
+    }
   };
 
   return (
@@ -68,7 +101,9 @@ export const LoginPage = ({ initialTab = 'login' }: { initialTab?: 'login' | 'si
           {/* Tabs */}
           <div className="flex border-b border-[#2D3149]">
             <button
-              onClick={() => setActiveTab('login')}
+              onClick={() => {
+                setActiveTab('login');
+              }}
               className={clsx(
                 "flex-1 py-4 text-xs font-semibold uppercase tracking-wider transition-all duration-200 border-b-2",
                 activeTab === 'login'
@@ -79,7 +114,9 @@ export const LoginPage = ({ initialTab = 'login' }: { initialTab?: 'login' | 'si
               Log In
             </button>
             <button
-              onClick={() => setActiveTab('signup')}
+              onClick={() => {
+                setActiveTab('signup');
+              }}
               className={clsx(
                 "flex-1 py-4 text-xs font-semibold uppercase tracking-wider transition-all duration-200 border-b-2",
                 activeTab === 'signup'
@@ -93,16 +130,13 @@ export const LoginPage = ({ initialTab = 'login' }: { initialTab?: 'login' | 'si
 
           {/* Form Content */}
           <div className="p-6 space-y-6">
-            {/* Social Authentication */}
+            {/* Quick Access Admin Button */}
             <Button
               variant="secondary"
-              onClick={() => handleMockLogin('user')}
-              className="w-full h-11 border-[#2D3149] hover:bg-[#22263A] text-xs font-medium gap-2 justify-center"
+              onClick={handleAdminLogin}
+              className="w-full h-11 border-[#2D3149] hover:bg-[#22263A] text-xs font-medium gap-2 justify-center text-[#10B981] hover:text-[#10B981]"
             >
-              <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-              </svg>
-              <span>Continue with GitHub</span>
+              <span>Quick Access: Admin Account</span>
             </Button>
 
             {/* Separator */}
@@ -114,14 +148,57 @@ export const LoginPage = ({ initialTab = 'login' }: { initialTab?: 'login' | 'si
               <div className="flex-grow border-t border-[#2D3149]/40" />
             </div>
 
-            {/* Email Form */}
+            {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-4">
+              {activeTab === 'signup' && (
+                <>
+                  {/* Full Name field */}
+                  <div className="space-y-1.5 text-left">
+                    <Label htmlFor="name" className="text-[10px] font-mono tracking-wider text-[#908fa0] uppercase ml-1">
+                      Full Name
+                    </Label>
+                    <div className="relative">
+                      <UserIcon className="absolute right-3.5 top-3.5 h-4 w-4 text-[#908fa0]/60" />
+                      <Input
+                        id="name"
+                        type="text"
+                        required
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="John Doe"
+                        className="pl-10.5 h-11 bg-[#1A1D27] border-[#2D3149] focus:border-[#6366F1] placeholder:text-[#908fa0]/30"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Username field */}
+                  <div className="space-y-1.5 text-left">
+                    <Label htmlFor="username" className="text-[10px] font-mono tracking-wider text-[#908fa0] uppercase ml-1">
+                      Username
+                    </Label>
+                    <div className="relative">
+                      <span className="absolute right-3.5 top-3.5 text-xs text-[#908fa0]/60 font-mono">@</span>
+                      <Input
+                        id="username"
+                        type="text"
+                        required
+                        value={usernameVal}
+                        onChange={(e) => setUsernameVal(e.target.value)}
+                        placeholder="@johndoe"
+                        className="pl-10.5 h-11 bg-[#1A1D27] border-[#2D3149] focus:border-[#6366F1] placeholder:text-[#908fa0]/30"
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {/* Email field */}
               <div className="space-y-1.5 text-left">
                 <Label htmlFor="email" className="text-[10px] font-mono tracking-wider text-[#908fa0] uppercase ml-1">
                   Email Address
                 </Label>
                 <div className="relative">
-                  <Mail className="absolute left-3.5 top-3 h-4.5 w-4.5 text-[#908fa0]/60" />
+                  <Mail className="absolute right-3.5 top-3.5 h-4 w-4 text-[#908fa0]/60" />
                   <Input
                     id="email"
                     type="email"
@@ -134,17 +211,21 @@ export const LoginPage = ({ initialTab = 'login' }: { initialTab?: 'login' | 'si
                 </div>
               </div>
 
+
+              {/* Password field */}
               <div className="space-y-1.5 text-left">
                 <div className="flex justify-between items-center px-1">
                   <Label htmlFor="password" className="text-[10px] font-mono tracking-wider text-[#908fa0] uppercase">
                     Password
                   </Label>
-                  <a href="#" className="text-[10px] font-mono text-[#6366F1] hover:underline">
-                    Forgot?
-                  </a>
+                  {activeTab === 'login' && (
+                    <a href="#" className="text-[10px] font-mono text-[#6366F1] hover:underline">
+                      Forgot?
+                    </a>
+                  )}
                 </div>
                 <div className="relative">
-                  <Lock className="absolute left-3.5 top-3 h-4.5 w-4.5 text-[#908fa0]/60" />
+                  <Lock className="absolute right-3.5 top-3.5 h-4 w-4 text-[#908fa0]/60" />
                   <Input
                     id="password"
                     type="password"
@@ -155,25 +236,67 @@ export const LoginPage = ({ initialTab = 'login' }: { initialTab?: 'login' | 'si
                     className="pl-10.5 h-11 bg-[#1A1D27] border-[#2D3149] focus:border-[#6366F1] placeholder:text-[#908fa0]/30"
                   />
                 </div>
+                {/* Avatar field (only shown for sign up) */}
+                {activeTab === 'signup' && (
+                  <div className="space-y-1.5 text-left">
+                    <div className="flex justify-between items-center px-1">
+                      <Label htmlFor="avatar" className="text-[10px] font-mono tracking-wider text-[#908fa0] uppercase">
+                        Avatar
+                      </Label>
+                      <span className="text-[10px] font-mono text-[#908fa0]/60">Optional</span>
+                    </div>
+                    <div className="relative">
+                      <input
+                        id="avatar"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleAvatar}
+                        className="hidden"
+                      />
+                      <label
+                        htmlFor="avatar"
+                        className="flex items-center justify-center w-full h-11 cursor-pointer"
+                      >
+                        <div className="flex-grow border-2 border-[#2D3149] border-dashed rounded-[6px] flex flex-col items-center justify-center p-2 hover:border-[#6366F1] transition-colors">
+                          {avatarUrl ? (
+                            <>
+                              <img src={avatarUrl} alt="Selected Avatar" className="h-8 w-8 rounded object-cover mb-1" />
+                              <span className="text-[9px] font-mono text-[#908fa0] max-w-full truncate">Selected</span>
+                            </>
+                          ) : (
+                            <>
+                              <UserIcon className="h-4 w-4 text-[#908fa0]/60 mb-1" />
+                              <span className="text-[9px] font-mono text-[#908fa0]">Click to upload</span>
+                            </>
+                          )}
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                )}
+
               </div>
 
+              {/* Action buttons */}
               <div className="pt-2 space-y-3">
                 <Button
                   type="submit"
                   disabled={loadingUser || loadingAdmin}
-                  className="w-full h-11 text-xs font-semibold uppercase tracking-wider"
+                  className="w-full h-11 text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2"
                 >
-                  {loadingUser ? 'Authorizing Session...' : activeTab === 'login' ? 'Log In Session' : 'Create Account'}
+                  {loadingUser && <Loader2 className="h-4 w-4 animate-spin" />}
+                  <span>{loadingUser ? 'Authorizing Session...' : activeTab === 'login' ? 'Log In Session' : 'Create Account'}</span>
                 </Button>
 
                 <Button
                   type="button"
                   variant="secondary"
                   disabled={loadingUser || loadingAdmin}
-                  onClick={() => handleMockLogin('admin')}
-                  className="w-full h-11 border-[#2D3149] hover:bg-[#22263A] text-xs font-semibold uppercase tracking-wider text-[#10B981] hover:text-[#10B981] hover:border-[#10B981]/30"
+                  onClick={handleAdminLogin}
+                  className="w-full h-11 border-[#2D3149] hover:bg-[#22263A] text-xs font-semibold uppercase tracking-wider text-[#10B981] hover:text-[#10B981] hover:border-[#10B981]/30 flex items-center justify-center gap-2"
                 >
-                  {loadingAdmin ? 'Authorizing Admin...' : 'Log In as Administrator'}
+                  {loadingAdmin && <Loader2 className="h-4 w-4 animate-spin" />}
+                  <span>{loadingAdmin ? 'Authorizing Admin...' : 'Log In as Administrator'}</span>
                 </Button>
               </div>
             </form>
@@ -182,7 +305,7 @@ export const LoginPage = ({ initialTab = 'login' }: { initialTab?: 'login' | 'si
             <div className="flex items-start gap-2.5 p-3.5 bg-[#22263A] rounded-[6px] border border-[#2D3149] text-xs text-[#908fa0] leading-5 text-left">
               <Info className="h-4.5 w-4.5 text-[#6366F1] flex-shrink-0 mt-0.5" />
               <p>
-                To explore admin screens, click the green administrator login. To explore normal candidate views, complete standard login.
+                To explore admin screens, click the green administrator login. To explore normal candidate views, complete standard login or sign up for a new account.
               </p>
             </div>
           </div>

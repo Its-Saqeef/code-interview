@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './hooks/useAuth';
+import { Toaster } from 'sonner';
 import AppLayout from './components/layout/AppLayout';
 import ProtectedRoute from './components/layout/ProtectedRoute';
 import AdminRoute from './components/layout/AdminRoute';
@@ -69,6 +70,7 @@ function App() {
   return (
     <AuthProvider>
       <AppContent />
+      <Toaster richColors theme="dark" position="bottom-right" />
     </AuthProvider>
   );
 }
