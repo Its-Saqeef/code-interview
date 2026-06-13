@@ -7,33 +7,22 @@ import {
   BellRing, 
   Terminal, 
   CreditCard,
-  Camera,
   Lock,
   Smartphone,
   Palette,
   Keyboard
 } from 'lucide-react';
-import { Button } from '../components/ui/Button';
-import { Input } from '../components/ui/Input';
+import { ProfileSettingsPanel } from '../components/settings/ProfileSettingsPanel';
 
 export const SettingsPage = () => {
   const [activeSubMenu, setActiveSubMenu] = useState<'profile' | 'security' | 'notifications' | 'editor' | 'billing'>('profile');
-  const [fullName, setFullName] = useState('Alex Chen');
-  const [username, setUsername] = useState('alechen_dev');
-  const [bio, setBio] = useState('Full-stack engineer passionate about distributed systems and competitive programming.');
-  const [country, setCountry] = useState('United States');
-  const [githubUrl, setGithubUrl] = useState('https://github.com/alex-chen');
 
-  // Editor Preferences State
+  // Editor Preferences State (local only for now)
   const [theme, setTheme] = useState<'vs-dark' | 'monokai'>('vs-dark');
   const [keybinding, setKeybinding] = useState<'standard' | 'vim' | 'emacs'>('standard');
   const [fontSize, setFontSize] = useState(14);
   const [tabSize, setTabSize] = useState<2 | 4>(2);
   const [lineWrapping, setLineWrapping] = useState(true);
-
-  const handleSaveChanges = () => {
-    alert('Settings successfully updated!');
-  };
 
   return (
     <div className="flex flex-col min-h-[calc(100vh-56px)] bg-[#0F1117] text-[#e4e1ed] font-inter select-none">
@@ -84,82 +73,7 @@ export const SettingsPage = () => {
         <div className="col-span-12 lg:col-span-9 space-y-6">
           {activeSubMenu === 'profile' && (
             <>
-              {/* Profile Card Section */}
-              <section className="bg-[#151824] border border-[#2D3149] rounded-lg p-6 space-y-6">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-bold text-white tracking-tight">Account Profile</h3>
-                  <Button 
-                    onClick={handleSaveChanges}
-                    className="h-8.5 px-4 text-[10px] font-bold uppercase tracking-wider"
-                  >
-                    Save Changes
-                  </Button>
-                </div>
-
-                <div className="flex flex-col md:flex-row gap-6 items-start">
-                  {/* Custom initials avatar space */}
-                  <div className="relative select-none flex-shrink-0">
-                    <div className="w-24 h-24 rounded-full bg-[#6366F1]/10 border-2 border-[#2D3149] flex items-center justify-center text-2xl font-black text-[#6366F1]">
-                      {fullName.split(' ').map(n => n[0]).join('')}
-                    </div>
-                    <button className="absolute bottom-0 right-0 bg-[#6366F1] p-2 rounded-full border border-[#151824] shadow-md text-white hover:brightness-110 active:scale-90 transition-all">
-                      <Camera className="h-3.5 w-3.5" />
-                    </button>
-                  </div>
-
-                  <div className="flex-grow w-full grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-1.5 text-left">
-                      <label className="text-[10px] font-mono font-bold text-[#908fa0] uppercase tracking-wider">Full Name</label>
-                      <Input
-                        value={fullName}
-                        onChange={(e) => setFullName(e.target.value)}
-                        className="bg-[#1A1D27] border-[#2D3149] text-xs h-9"
-                      />
-                    </div>
-                    <div className="space-y-1.5 text-left">
-                      <label className="text-[10px] font-mono font-bold text-[#908fa0] uppercase tracking-wider">Username</label>
-                      <div className="relative">
-                        <span className="absolute left-3 top-2.5 text-xs text-[#908fa0] font-mono">@</span>
-                        <Input
-                          value={username}
-                          onChange={(e) => setUsername(e.target.value)}
-                          className="bg-[#1A1D27] border-[#2D3149] text-xs h-9 pl-7"
-                        />
-                      </div>
-                    </div>
-                    <div className="space-y-1.5 md:col-span-2 text-left">
-                      <label className="text-[10px] font-mono font-bold text-[#908fa0] uppercase tracking-wider">Bio</label>
-                      <textarea
-                        value={bio}
-                        onChange={(e) => setBio(e.target.value)}
-                        rows={3}
-                        className="w-full bg-[#1A1D27] border border-[#2D3149] rounded-[4px] px-3 py-2 text-xs text-[#e4e1ed] focus:border-[#6366F1] outline-none transition-all resize-none"
-                      />
-                    </div>
-                    <div className="space-y-1.5 text-left">
-                      <label className="text-[10px] font-mono font-bold text-[#908fa0] uppercase tracking-wider">Country</label>
-                      <select
-                        value={country}
-                        onChange={(e) => setCountry(e.target.value)}
-                        className="w-full bg-[#1A1D27] border border-[#2D3149] rounded-[4px] px-3 py-2 text-xs text-[#e4e1ed] focus:border-[#6366F1] outline-none transition-all cursor-pointer"
-                      >
-                        <option>United States</option>
-                        <option>Canada</option>
-                        <option>United Kingdom</option>
-                      </select>
-                    </div>
-                    <div className="space-y-1.5 text-left">
-                      <label className="text-[10px] font-mono font-bold text-[#908fa0] uppercase tracking-wider">GitHub URL</label>
-                      <Input
-                        value={githubUrl}
-                        onChange={(e) => setGithubUrl(e.target.value)}
-                        placeholder="https://github.com/yourusername"
-                        className="bg-[#1A1D27] border-[#2D3149] text-xs h-9"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </section>
+              <ProfileSettingsPanel />
 
               {/* Editor Preferences Section */}
               <section className="grid grid-cols-1 md:grid-cols-2 gap-4">

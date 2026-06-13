@@ -4,13 +4,17 @@ import { DifficultyBadge } from './DifficultyBadge';
 import { TagBadge } from './TagBadge';
 import { Card } from '../ui/Card';
 import { Button } from '../ui/Button';
+import { formatAcceptanceDisplay } from '../../utils/problemStats';
 
 export interface Problem {
   id: string;
+  slug: string;
   title: string;
   difficulty: 'Easy' | 'Medium' | 'Hard';
   tags: string[];
+  acceptanceRate: number | null;
   acceptance: string;
+  totalSubmissions: number;
   solved: boolean;
 }
 
@@ -22,15 +26,23 @@ export const ProblemCard = ({ problem }: ProblemCardProps) => {
   const navigate = useNavigate();
 
   const handleAction = () => {
-    navigate(`/problems/${problem.id}`);
+    navigate(`/problems/${problem.slug}`);
   };
 
   return (
     <Card className="bg-[#1A1D27] border-[#2D3149] rounded-lg p-5 flex flex-col hover:border-[#6366F1] transition-all duration-300 group shadow-lg text-left">
       <div className="flex justify-between items-start mb-4 gap-3">
-        <h4 className="text-sm font-bold text-white group-hover:text-[#6366F1] transition-colors leading-snug">
-          {problem.title}
-        </h4>
+        <div className="flex flex-col gap-1.5 min-w-0">
+          <h4 className="text-sm font-bold text-white group-hover:text-[#6366F1] transition-colors leading-snug">
+            {problem.title}
+          </h4>
+          {problem.solved && (
+            <span className="inline-flex items-center gap-1 text-[9px] font-mono font-bold uppercase tracking-wider text-[#10B981] w-fit">
+              <CheckCircle2 className="h-3 w-3" />
+              Solved
+            </span>
+          )}
+        </div>
         <DifficultyBadge difficulty={problem.difficulty} className="flex-shrink-0" />
       </div>
 
@@ -43,7 +55,9 @@ export const ProblemCard = ({ problem }: ProblemCardProps) => {
       <div className="mt-auto flex items-center justify-between pt-4 border-t border-[#2D3149]/40 select-none">
         <div className="flex flex-col text-left">
           <span className="text-[9px] font-mono font-semibold tracking-wider text-[#908fa0] uppercase">Acceptance</span>
-          <span className="font-mono text-xs font-semibold text-[#7bd0ff]">{problem.acceptance}</span>
+          <span className="font-mono text-xs font-semibold text-[#7bd0ff]">
+            {formatAcceptanceDisplay(problem.acceptanceRate)}
+          </span>
         </div>
 
         {problem.solved ? (

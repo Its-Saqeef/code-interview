@@ -1,0 +1,17 @@
+export const ADMIN_PROBLEM_FIELD_HELP = {
+  title: 'The display name shown in the problem library and interview room header.',
+  difficulty: 'Sets the difficulty badge and helps candidates filter problems by level.',
+  timeLimit: 'Maximum execution time allowed per submission when running against the judge.',
+  memoryLimit: 'Maximum memory the solution may use during automated grading.',
+  tags: 'Topic labels used for search and filtering, such as Array, DP, or Graph.',
+  description: 'The full problem statement candidates read before coding. Supports plain text or markdown.',
+  examples: 'Worked examples shown on the problem page. At least one example with input and output is required.',
+  exampleInput: 'Sample input formatted the same way it appears on the problem detail page.',
+  exampleOutput: 'The expected result for the sample input shown to candidates.',
+  constraints: 'Input/output limits listed under the Constraints section on the problem page.',
+  hints: 'Progressive clues revealed to candidates who need guidance during practice.',
+  starterCode: 'Language-specific templates pre-filled in the editor when a session starts.',
+  testCases: 'Cases used by the judge to grade submissions. Hidden cases are not shown to candidates.',
+  testCaseInput: 'Raw input passed to the candidate solution during grading.',
+  testCaseOutput: 'The exact output your solution must produce for this test case.',
+} as const;

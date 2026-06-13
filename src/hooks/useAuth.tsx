@@ -1,12 +1,17 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { loginApi, registerApi, logoutApi, getMeApi } from '../api/auth.api';
+import { loginApi, registerApi, logoutApi, getMeApi, updateProfileApi, type UpdateProfilePayload } from '../api/auth.api';
 
 export interface User {
   id: string;
   name: string;
+  username: string;
   email: string;
   role: 'user' | 'admin';
-  avatarUrl?: string;
+  avatarUrl?: string | null;
+  bio?: string;
+  country?: string;
+  githubUrl?: string;
+  createdAt?: string | null;
 }
 
 interface AuthContextType {
@@ -16,6 +21,8 @@ interface AuthContextType {
   login: (email: string, password: string) => Promise<void>;
   register: (name: string, username: string, email: string, password: string, avatarUrl: string) => Promise<void>;
   logout: () => Promise<void>;
+  refreshUser: () => Promise<void>;
+  updateProfile: (payload: UpdateProfilePayload) => Promise<User>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -103,8 +110,35 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
+  const refreshUser = async () => {
+    const data = await getMeApi();
+    if (data.success && data.user) {
+      setUser(data.user);
+      localStorage.setItem('auth_user', JSON.stringify(data.user));
+    }
+  };
+
+  const updateProfile = async (payload: UpdateProfilePayload) => {
+    const data = await updateProfileApi(payload);
+    if (data.success && data.user) {
+      setUser(data.user);
+      localStorage.setItem('auth_user', JSON.stringify(data.user));
+      return data.user;
+    }
+    throw new Error('Failed to update profile');
+  };
+
   return (
-    <AuthContext value={{ user, isAuthenticated: !!user, isLoading, login, register, logout }}>
+    <AuthContext value={{
+      user,
+      isAuthenticated: !!user,
+      isLoading,
+      login,
+      register,
+      logout,
+      refreshUser,
+      updateProfile,
+    }}>
       {children}
     </AuthContext>
   );

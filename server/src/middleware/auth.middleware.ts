@@ -1,5 +1,5 @@
 import express from "express";
-import { verifyToken } from "../services/jwt_service.ts";
+import { verifyToken } from "../services/jwtService.ts";
 import { AppError, catchAsync } from "../utils/errors.ts";
 
 export const authMiddleware = catchAsync(async (req: express.Request, res: express.Response, next: express.NextFunction) => {

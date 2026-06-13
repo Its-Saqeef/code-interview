@@ -7,9 +7,12 @@ interface ProblemFiltersProps {
   onTagToggle: (tag: string) => void;
   selectedStatus: 'all' | 'solved' | 'unsolved';
   onStatusChange: (status: 'all' | 'solved' | 'unsolved') => void;
+  availableTags?: string[];
+  solvedCount?: number;
+  unsolvedCount?: number;
 }
 
-const availableTags = [
+const defaultTags = [
   'Arrays',
   'Strings',
   'Dynamic Programming',
@@ -31,6 +34,9 @@ export const ProblemFilters = ({
   onTagToggle,
   selectedStatus,
   onStatusChange,
+  availableTags = defaultTags,
+  solvedCount,
+  unsolvedCount,
 }: ProblemFiltersProps) => {
   return (
     <aside className="w-[280px] bg-[#151824] border-r border-[#2D3149] p-5 overflow-y-auto custom-scrollbar flex flex-col space-y-8 select-none text-left">
@@ -89,7 +95,15 @@ export const ProblemFilters = ({
           Status
         </h3>
         <div className="space-y-3">
-          {(['all', 'solved', 'unsolved'] as const).map((status) => (
+          {(['all', 'solved', 'unsolved'] as const).map((status) => {
+            const countLabel =
+              status === 'solved' && solvedCount !== undefined
+                ? ` (${solvedCount})`
+                : status === 'unsolved' && unsolvedCount !== undefined
+                  ? ` (${unsolvedCount})`
+                  : '';
+
+            return (
             <label key={status} className="flex items-center gap-3 cursor-pointer group">
               <input 
                 type="radio" 
@@ -100,9 +114,11 @@ export const ProblemFilters = ({
               />
               <span className="text-xs font-semibold text-[#e4e1ed] capitalize group-hover:text-white transition-colors">
                 {status === 'all' ? 'All Problems' : status}
+                {countLabel}
               </span>
             </label>
-          ))}
+            );
+          })}
         </div>
       </div>
     </aside>

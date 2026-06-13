@@ -2,10 +2,11 @@ import { z } from "zod"
 import { db } from "../db/connection.ts";
 import { User } from "../db/schema.ts";
 import express from "express";
-import { generateToken } from "../services/jwt_service.ts";
+import { generateToken } from "../services/jwtService.ts";
 import { eq } from "drizzle-orm";
 import bcrypt from "bcrypt";
 import { CloudinaryUpload } from "../services/cloudinary.ts";
+import { toPublicUser } from "../services/userProfile.ts";
 import { AppError, catchAsync } from "../utils/errors.ts";
 
 const userSchema = z.object({
@@ -31,7 +32,10 @@ export const registerUser = catchAsync(async (req: express.Request, res: express
         throw new AppError('User already exists', 400);
     }
 
-    const avatar = await CloudinaryUpload(avatarUrl || "");
+    let avatar = { url: "" };
+    if(avatarUrl) {
+    avatar = await CloudinaryUpload(avatarUrl);
+    }
     const [user] = await db.insert(User).values({
         name,
         username,
@@ -40,12 +44,12 @@ export const registerUser = catchAsync(async (req: express.Request, res: express
         avatarUrl: avatar.url
     }).returning();
 
-    await generateToken({ name, email, id: user.id, role: user.role, avatarUrl: user.avatarUrl }, res);
+    await generateToken({ name: user.name, email: user.email, id: user.id, role: user.role, avatarUrl: user.avatarUrl, username: user.username }, res);
     
     return res.status(201).json({ 
         success: true, 
         message: 'User registered successfully', 
-        user: { name: user.name, email: user.email, id: user.id, role: user.role, avatarUrl: user.avatarUrl } 
+        user: toPublicUser(user),
     });
 });
 
@@ -58,5 +62,5 @@ export const getUser = catchAsync(async (req: express.Request, res: express.Resp
     if (!user) {
         throw new AppError('User not found', 404);
     }
-    return res.status(200).json({ success: true, user });
+    return res.status(200).json({ success: true, user: toPublicUser(user) });
 });

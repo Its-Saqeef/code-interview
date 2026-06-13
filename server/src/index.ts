@@ -7,6 +7,8 @@ import authRouter from './routes/auth.route.ts';
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { globalErrorHandler } from "./middleware/error.middleware.ts";
+import adminRouter from './routes/admin.route.ts';
+import problemsRouter from './routes/problems.route.ts';
 
 const app = express();
 const httpServer = http.createServer(app);
@@ -31,6 +33,8 @@ connectDB().catch((err) => {
 //Routes
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/admin", adminRouter);
+app.use("/api/v1/problems", problemsRouter);
 
 // Global Error Handling Middleware
 app.use(globalErrorHandler);

@@ -1,5 +1,4 @@
 import { Search } from 'lucide-react';
-import { Input } from '../ui/Input';
 
 interface ProblemSearchProps {
   query: string;
@@ -18,13 +17,16 @@ export const ProblemSearch = ({
     <div className="p-4 border-b border-[#2D3149] bg-[#151824] flex flex-col sm:flex-row items-center justify-between gap-4 select-none">
       {/* Search Input */}
       <div className="relative w-full sm:max-w-md text-left">
-        <Search className="absolute left-3.5 top-3 h-4.5 w-4.5 text-[#908fa0]/60" />
-        <Input
-          value={query}
-          onChange={(e) => onQueryChange(e.target.value)}
-          placeholder="Search problems by name, tag, or ID..."
-          className="pl-10.5 h-10 bg-[#1A1D27] border-[#2D3149] focus:border-[#6366F1] placeholder:text-[#908fa0]/30 text-xs"
-        />
+        <div className="flex items-center gap-3 h-10 rounded-[6px] border border-[#2D3149] bg-[#1A1D27] px-3 transition-all duration-200 focus-within:border-[#6366F1] focus-within:ring-2 focus-within:ring-inset focus-within:ring-[#6366F1]">
+          <Search className="h-4 w-4 shrink-0 text-[#908fa0]/60" aria-hidden="true" />
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => onQueryChange(e.target.value)}
+            placeholder="Search problems by name, tag, or ID..."
+            className="min-w-0 flex-1 bg-transparent text-xs text-white placeholder:text-[#908fa0]/40 outline-none border-0 p-0 focus:ring-0"
+          />
+        </div>
       </div>
 
       {/* Sort Select Selector */}
